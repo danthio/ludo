@@ -52,9 +52,9 @@ def return_home(p):
 	ar3=[]
 	for a in ar:
 
-		if a.split("_")[0]==ar2[-1]:
-			if game2[a][:2]==[1,0]:
-				ar3.append(a)
+		#if a.split("_")[0]==ar2[-1]:
+		#	if game2[a][:2]==[1,0]:
+		#		ar3.append(a)
 
 
 		if game2[a][:2]==[2,2]:
