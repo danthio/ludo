@@ -1,1 +1,1 @@
-![image](https://github.com/danthio/ludo/assets/109515278/44c928de-a08c-4465-b77f-989ce5dbe5cd)
+![image](https://github.com/user-attachments/assets/aae59ce7-42d2-456e-9922-9356fbca9f66)
