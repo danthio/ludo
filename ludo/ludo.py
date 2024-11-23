@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 from PIL import Image,ImageTk
 import math
+import time
 
 
 
@@ -2315,9 +2316,10 @@ def main():
 	global can, game1,game2,turn
 	global turn_,ar_crown,ar_p
 	global go
+	global stop,stop_
 
 
-	if state=="game":
+	if state=="game" and go==0:
 
 
 		can.delete(turn_)
@@ -2343,7 +2345,7 @@ def main():
 
 
 
-			if turn==game1[0]:
+			if turn==game1[0] and det(game1[0])==1:
 
 
 				if game1[0]=="red":
@@ -2359,11 +2361,11 @@ def main():
 					cl="#3f5bff"
 					cl2="darkblue"
 
-				turn_=can.create_polygon(70,590-100-70, 70,590-70, 70+100,590-70, 70+10,590-70-10,fill=cl,outline=cl)
+				turn_=can.create_polygon(70,590-100-70, 70,590-70, 70+100,590-70, 70+10,590-70-10,fill=cl2,outline=cl)
 
 
 
-			elif turn==game1[1]:
+			elif turn==game1[1] and det(game1[1])==1:
 
 
 
@@ -2381,11 +2383,11 @@ def main():
 					cl2="darkblue"
 
 
-				turn_=can.create_polygon(70,70+100, 70,70, 70+100,70, 70+10,70+10,  fill=cl,outline=cl)
+				turn_=can.create_polygon(70,70+100, 70,70, 70+100,70, 70+10,70+10,  fill=cl2,outline=cl)
 
 
 
-			elif turn==game1[2]:
+			elif turn==game1[2] and det(game1[2])==1:
 
 
 
@@ -2402,12 +2404,12 @@ def main():
 					cl="#3f5bff"
 					cl2="darkblue"
 
-				turn_=can.create_polygon(590-70-100,70, 590-70,70, 590-70,70+100, 590-70-10,70+10, 590-70-100,70,  fill=cl,outline=cl)
+				turn_=can.create_polygon(590-70-100,70, 590-70,70, 590-70,70+100, 590-70-10,70+10, 590-70-100,70,  fill=cl2,outline=cl)
 
 
 
 
-			elif turn==game1[3]:
+			elif turn==game1[3] and det(game1[3])==1:
 
 
 
@@ -2424,7 +2426,7 @@ def main():
 					cl="#3f5bff"
 					cl2="darkblue"
 
-				turn_=can.create_polygon(590-70,580-70-100, 590-70,590-70, 590-70-100,590-70, 590-70-10,590-70-10, 590-70,580-70-100,  fill=cl,outline=cl)
+				turn_=can.create_polygon(590-70,580-70-100, 590-70,590-70, 590-70-100,590-70, 590-70-10,590-70-10, 590-70,580-70-100,  fill=cl2,outline=cl)
 		
 
 
@@ -2837,7 +2839,8 @@ def main():
 
 
 	if det(game1[0])==0 and det(game1[1])==0 and det(game1[2])==0 and det(game1[3])==0:
-		go=1
+		stop=1
+		stop_=time.time()
 
 
 
@@ -3184,7 +3187,7 @@ def draw_bg():
 	y_=y+s*9
 
 
-	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[0], alpha=.25)
+	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[0], alpha=.35)
 
 	for _y in range(6):
 
@@ -3287,7 +3290,7 @@ def draw_bg():
 
 	x_,y_=x,y+s*6
 
-	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[1], alpha=.25)
+	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[1], alpha=.35)
 
 	for _x in range(6):
 
@@ -3387,7 +3390,7 @@ def draw_bg():
 	x_=x+s*6
 	y_=y
 
-	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[2], alpha=.25)
+	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[2], alpha=.35)
 
 	for _y in range(6):
 
@@ -3491,7 +3494,7 @@ def draw_bg():
 	x_=x+s*9
 	y_=y+s*6
 
-	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[3], alpha=.25)
+	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[3], alpha=.35)
 
 	for _x in range(6):
 
@@ -3702,24 +3705,24 @@ def sel_game_mode():
 
 
 
-	create_rectangle(can,0, 0, 590, 590, fill='#000000', alpha=.5)
+	#create_rectangle(can,0, 0, 590, 590, fill='#000000', alpha=.5)
 
 
-	can.create_arc(wd/2-100,ht/2-30, wd/2-100+30,ht/2,style="arc",start=90,extent=180,outline="#777777",width=1)
-	can.create_arc(wd/2+100-30,ht/2-30,wd/2+100,ht/2,style="arc",start=270,extent=180,outline="#777777",width=1)
+	can.create_arc(wd/2-100,ht/2-30, wd/2-100+30,ht/2,style="arc",start=90,extent=180,outline="#f3f3f3",width=1)
+	can.create_arc(wd/2+100-30,ht/2-30,wd/2+100,ht/2,style="arc",start=270,extent=180,outline="#f3f3f3",width=1)
 
 
-	can.create_line(wd/2-100+15,ht/2-30,  wd/2+100-15,ht/2-30,fill="#777777",width=1)
-	can.create_line(wd/2-100+15-1,ht/2,  wd/2+100-15,ht/2,fill="#777777",width=1)
+	can.create_line(wd/2-100+15,ht/2-30,  wd/2+100-15,ht/2-30,fill="#f3f3f3",width=1)
+	can.create_line(wd/2-100+15-1,ht/2,  wd/2+100-15,ht/2,fill="#f3f3f3",width=1)
 
 
 
-	can.create_arc(wd/2-100,ht/2-30+60, wd/2-100+30,ht/2+60,style="arc",start=90,extent=180,outline="#777777",width=1)
-	can.create_arc(wd/2+100-30,ht/2-30+60,wd/2+100,ht/2+60,style="arc",start=270,extent=180,outline="#777777",width=1)
+	can.create_arc(wd/2-100,ht/2-30+60, wd/2-100+30,ht/2+60,style="arc",start=90,extent=180,outline="#f3f3f3",width=1)
+	can.create_arc(wd/2+100-30,ht/2-30+60,wd/2+100,ht/2+60,style="arc",start=270,extent=180,outline="#f3f3f3",width=1)
 
 
-	can.create_line(wd/2-100+15,ht/2-30+60,  wd/2+100-15,ht/2-30+60,fill="#777777",width=1)
-	can.create_line(wd/2-100+15-1,ht/2+60,  wd/2+100-15,ht/2+60,fill="#777777",width=1)
+	can.create_line(wd/2-100+15,ht/2-30+60,  wd/2+100-15,ht/2-30+60,fill="#f3f3f3",width=1)
+	can.create_line(wd/2-100+15-1,ht/2+60,  wd/2+100-15,ht/2+60,fill="#f3f3f3",width=1)
 
 
 
@@ -3749,7 +3752,7 @@ def sel_col():
 
 
 
-	create_rectangle(can,0, 0, 590, 590, fill='#000000', alpha=.3)
+	#create_rectangle(can,0, 0, 590, 590, fill='#000000', alpha=.3)
 
 
 	
@@ -3763,7 +3766,7 @@ def sel_col():
 
 
 
-	can.create_text(wd/2, ht/4+50,text="Select Side",font=("FreeMono",13),fill="#f5f5f5")
+	can.create_text(wd/2, 30,text="Select Side",font=("FreeMono",13),fill="#f5f5f5")
 
 
 
@@ -3779,7 +3782,6 @@ def sel_col():
 
 	for _ in range(4):
 
-		can.create_oval(x_,ht/2-50, x_+100,ht/2+50,outline="#111111")
 
 		if not choice=="":
 			if _==ar.index(choice):
@@ -4578,6 +4580,20 @@ game2={"red_1":"r1",
 
 		}
 
+def _stop():
+
+	global stop,stop_,go,turn
+
+	if stop==1:
+		main()
+
+		if time.time()>stop_+5:
+			
+			go=1
+			stop=0
+
+	root.after(10,_stop)
+
 
 winners=[]
 crown=""
@@ -4606,6 +4622,9 @@ back=0
 
 bg=0
 
+
+stop=0
+stop_=0
 
 
 
@@ -4685,5 +4704,7 @@ return_home_2()
 return_home_3()
 return_home_4()
 
+
+_stop()
 
 root.mainloop()
