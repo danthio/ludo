@@ -333,7 +333,7 @@ def return_home_3():
 			game2[i]=[5-threes_[n][-1],2,game1[2],threes_[n][-1],threes_[n][-2],0]
 
 
-		elif ones_[n][-2]==50:
+		elif threes_[n][-2]==50:
 
 			game2[i]=[threes_[n][-1],1,game1[2],threes_[n][-1],threes_[n][-2],0]	
 
