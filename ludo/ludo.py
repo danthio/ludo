@@ -3872,7 +3872,7 @@ def draw_pointer(x,y,sz,col,i):
 	ar_p[i]=can.create_polygon(ar,fill=col3,outline=col3)
 	ar_p[i+1]=can.create_line(ar2,fill=col2)
 
-	ar_p[i+2]=can.create_oval(cx-sz/5*1.3,cy-sz/5*1.3, cx+sz/5*1.3,cy+sz/5*1.3, fill=col2,outline=col2)
+	ar_p[i+2]=can.create_oval(cx-sz/5*1.1,cy-sz/5*1.1, cx+sz/5*1.1,cy+sz/5*1.1, fill=col2,outline=col2)
 
 
 
