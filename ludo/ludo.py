@@ -5,12 +5,6 @@ import math
 import time
 
 
-
-im=Image.open("data/back.png")
-im=im.resize((30,30))
-im.save("data/back.png")
-
-
 def wins():
 	global game1,winners
 
@@ -127,7 +121,7 @@ def return_home_1():
 			game2[i]=[5-ones_[n][-1],2,game1[0],ones_[n][-1],ones_[n][-2],0]
 
 
-		elif 50:
+		elif ones_[n][-2]==50:
 
 			game2[i]=[ones_[n][-1],1,game1[0],ones_[n][-1],ones_[n][-2],0]	
 
@@ -232,7 +226,7 @@ def return_home_2():
 			game2[i]=[5-twos_[n][-1],2,game1[1],twos_[n][-1],twos_[n][-2],0]
 
 
-		elif 50:
+		elif ones_[n][-2]==50:
 
 			game2[i]=[twos_[n][-1],1,game1[1],twos_[n][-1],twos_[n][-2],0]	
 
@@ -339,7 +333,7 @@ def return_home_3():
 			game2[i]=[5-threes_[n][-1],2,game1[2],threes_[n][-1],threes_[n][-2],0]
 
 
-		elif 50:
+		elif ones_[n][-2]==50:
 
 			game2[i]=[threes_[n][-1],1,game1[2],threes_[n][-1],threes_[n][-2],0]	
 
@@ -441,7 +435,7 @@ def return_home_4():
 			game2[i]=[5-fours_[n][-1],2,game1[3],fours_[n][-1],fours_[n][-2],0]
 
 
-		elif 50:
+		elif ones_[n][-2]==50:
 
 			game2[i]=[fours_[n][-1],1,game1[3],fours_[n][-1],fours_[n][-2],0]	
 
@@ -2926,7 +2920,7 @@ def draw_bg():
 
 
 
-	xv=159
+	xv=(wd-331)/2
 
 
 	can.create_image(xv,0,image=bg,anchor="nw")
@@ -3187,7 +3181,7 @@ def draw_bg():
 	y_=y+s*9
 
 
-	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[0], alpha=.35)
+	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[0], alpha=.3)
 
 	for _y in range(6):
 
@@ -3290,7 +3284,7 @@ def draw_bg():
 
 	x_,y_=x,y+s*6
 
-	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[1], alpha=.35)
+	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[1], alpha=.3)
 
 	for _x in range(6):
 
@@ -3390,7 +3384,7 @@ def draw_bg():
 	x_=x+s*6
 	y_=y
 
-	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[2], alpha=.35)
+	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[2], alpha=.3)
 
 	for _y in range(6):
 
@@ -3494,7 +3488,7 @@ def draw_bg():
 	x_=x+s*9
 	y_=y+s*6
 
-	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[3], alpha=.35)
+	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[3], alpha=.3)
 
 	for _x in range(6):
 
@@ -3698,7 +3692,7 @@ def sel_game_mode():
 
 
 
-	xv=159
+	xv=(wd-331)/2
 
 
 	can.create_image(xv,0,image=bg,anchor="nw")
@@ -3745,7 +3739,7 @@ def sel_col():
 
 
 
-	xv=159
+	xv=(wd-331)/2
 
 
 	can.create_image(xv,0,image=bg,anchor="nw")
@@ -3830,6 +3824,8 @@ def draw_pointer(x,y,sz,col,i):
 
 		a-=1
 
+	ar2.append(x)
+	ar2.append(y)
 
 	a=-90+20
 
@@ -3873,10 +3869,10 @@ def draw_pointer(x,y,sz,col,i):
 	elif col=="blue":
 		col="#3f5bff"
 
-	ar_p[i]=can.create_polygon(ar,fill=col2,outline=col2)
-	ar_p[i+1]=can.create_line(ar2,fill=col3)
+	ar_p[i]=can.create_polygon(ar,fill=col3,outline=col3)
+	ar_p[i+1]=can.create_line(ar2,fill=col2)
 
-	ar_p[i+2]=can.create_oval(cx-sz/5*1.1,cy-sz/5*1.1, cx+sz/5*1.1,cy+sz/5*1.1, fill=col3,outline=col3)
+	ar_p[i+2]=can.create_oval(cx-sz/5*1.1,cy-sz/5*1.1, cx+sz/5*1.1,cy+sz/5*1.1, fill=col2,outline=col2)
 
 
 
@@ -4527,7 +4523,7 @@ def init_im():
 	global bg,st_1,st_2,st_3,st_4,quit,crown,back
 
 
-	bg=ImageTk.PhotoImage(file="data/dice_wallpaper.jpg")
+	bg=ImageTk.PhotoImage(file="data/dice.jpg")
 
 
 	st_1=ImageTk.PhotoImage(file="data/red_star.png")
@@ -4585,9 +4581,10 @@ def _stop():
 	global stop,stop_,go,turn
 
 	if stop==1:
-		main()
+		
 
-		if time.time()>stop_+5:
+		if time.time()>stop_+3:
+			main()
 			
 			go=1
 			stop=0
