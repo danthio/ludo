@@ -6,7 +6,7 @@ import time
 
 
 def wins():
-	global game1,winners
+	global state,game1,winners,crown
 
 	for c in game1:
 
@@ -17,6 +17,54 @@ def wins():
 			e=det(c)
 			if e==0:
 				winners.append(c)
+
+
+				wv=game1.index(c)
+
+				if wv==0:
+
+					x=10
+					y=590-70-50-30-50
+
+					can.create_image(x,y,image=crown,anchor="nw")
+					
+
+					can.create_text(35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					
+				elif wv==3:
+					x=590-60
+					y=590-70-50-30-50
+
+					can.create_image(x,y,image=crown,anchor="nw")
+					
+
+					can.create_text(590-35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					
+
+
+				elif wv==1:
+
+					x=10
+					y=70+50+10
+
+					can.create_image(x,y,image=crown,anchor="nw")
+					
+
+					can.create_text(35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					
+				elif wv==2:
+					x=590-60
+					y=70+50+10
+
+					can.create_image(x,y,image=crown,anchor="nw")
+					
+
+					can.create_text(590-35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+
+
+
+
+
 
 
 	root.after(1,wins)
@@ -2415,65 +2463,8 @@ def main():
 
 
 
-		#winners=["red","blue","yellow","green"]
-
-
-		for i in ar_crown:
-			can.delete(i)
-
-
-		n=0
-
-
-
 
 		
-
-		for winner in range(len(winners)):
-
-			wv=game1.index(winners[winner])
-
-			if wv==0:
-
-				x=10
-				y=590-70-50-30-50
-
-				ar_crown[n]=can.create_image(x,y,image=crown,anchor="nw")
-				n+=1
-
-				ar_crown[n]=can.create_text(35,y+60,text=str(winner+1),font=("FreeMono",13),fill="#faea95")
-				n+=1
-			elif wv==3:
-				x=590-60
-				y=590-70-50-30-50
-
-				ar_crown[n]=can.create_image(x,y,image=crown,anchor="nw")
-				n+=1
-
-				ar_crown[n]=can.create_text(590-35,y+60,text=str(winner+1),font=("FreeMono",13),fill="#faea95")
-				n+=1
-
-
-			elif wv==1:
-
-				x=10
-				y=70+50+10
-
-				ar_crown[n]=can.create_image(x,y,image=crown,anchor="nw")
-				n+=1
-
-				ar_crown[n]=can.create_text(35,y+60,text=str(winner+1),font=("FreeMono",13),fill="#faea95")
-				n+=1
-			elif wv==2:
-				x=590-60
-				y=70+50+10
-
-				ar_crown[n]=can.create_image(x,y,image=crown,anchor="nw")
-				n+=1
-
-				ar_crown[n]=can.create_text(590-35,y+60,text=str(winner+1),font=("FreeMono",13),fill="#faea95")
-
-
 
 
 
