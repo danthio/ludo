@@ -2667,9 +2667,9 @@ def main():
 				
 
 
-				draw_pointer(_xx1,_yy1,23,i[1][0],n)
+				draw_pointer(_xx1,_yy1,30,i[1][0],n)
 				n+=3
-				draw_pointer(_xx2,_yy2,23,i[1][1],n)
+				draw_pointer(_xx2,_yy2,30,i[1][1],n)
 				n+=3
 
 
@@ -2727,11 +2727,11 @@ def main():
 
 				
 
-				draw_pointer(_xx1,_yy1,20,i[1][0],n)
+				draw_pointer(_xx1,_yy1,30,i[1][0],n)
 				n+=3
-				draw_pointer(_xx2,_yy2,20,i[1][1],n)
+				draw_pointer(_xx2,_yy2,30,i[1][1],n)
 				n+=3
-				draw_pointer(_xx3,_yy3,20,i[1][2],n)
+				draw_pointer(_xx3,_yy3,30,i[1][2],n)
 				n+=3
 
 
@@ -2805,13 +2805,13 @@ def main():
 
 				
 
-				draw_pointer(_xx1,_yy1,20,i[1][0],n)
+				draw_pointer(_xx1,_yy1,30,i[1][0],n)
 				n+=3
-				draw_pointer(_xx2,_yy2,20,i[1][1],n)
+				draw_pointer(_xx2,_yy2,30,i[1][1],n)
 				n+=3
-				draw_pointer(_xx3,_yy3,20,i[1][2],n)
+				draw_pointer(_xx3,_yy3,30,i[1][2],n)
 				n+=3
-				draw_pointer(_xx4,_yy4,20,i[1][3],n)
+				draw_pointer(_xx4,_yy4,30,i[1][3],n)
 				n+=3
 
 
