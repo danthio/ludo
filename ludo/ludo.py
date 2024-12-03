@@ -4181,27 +4181,26 @@ def can_commands(e):
 			if 195+15<=e.x<=395-15:
 				if 510<=e.y<=540:
 
-						
-					game2={
-						"red_1": [5, 1, 'red', 5, 55, 1],
-						"red_2": [6, 1, 'red', 6, 56, 1],
-						"red_3": [6, 1, 'red', 6, 56, 1],
-						"red_4": [6, 1, 'red', 6, 56, 1],
-						"green_1": [6, 1, 'green', 6, 56, 1],
-						"green_2": [6, 1, 'green', 6, 56, 1],
-						"green_3": [6, 1, 'green', 6, 56, 1],
-						"green_4": [5, 1, 'green', 5, 55, 1],
-						"yellow_1": [6, 1, 'yellow', 6, 56, 1],
-						"yellow_2": [6, 1, 'yellow', 6, 56, 1],
-						"yellow_3": [6, 1, 'yellow', 6, 56, 1],
-						"yellow_4": [4, 1, 'yellow', 4, 54, 1],
-						"blue_1": [6, 1, 'blue', 6, 56, 1],
-						"blue_2": [6, 1, 'blue', 6, 56, 1],
-						"blue_3": [6, 1, 'blue', 6, 56, 1],
-						"blue_4": [5, 1, 'blue', 5, 55, 1]
+							
+					game2={"red_1":"r1",
+							"red_2":"r2",
+							"red_3":"r3",
+							"red_4":"r4",
 
+							"green_1":"g1",
+							"green_2":"g2",
+							"green_3":"g3",
+							"green_4":"g4",		
 
+							"yellow_1":"y1",
+							"yellow_2":"y2",
+							"yellow_3":"y3",
+							"yellow_4":"y4",
 
+							"blue_1":"b1",
+							"blue_2":"b2",
+							"blue_3":"b3",
+							"blue_4":"b4"
 
 					}
 					winners=[]
