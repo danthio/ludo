@@ -2279,56 +2279,66 @@ def _dice_(dd,v,col):
 	dd.delete("all")	
 
 
+	d=3
 
-	
+	dd.create_oval(d,d, 20+d,20+d, fill=col,outline=col)
+	dd.create_oval(d,50-20-d, 20+d,50-d, fill=col,outline=col)
+
+	dd.create_oval(50-20-d,d, 50-d,20+d, fill=col,outline=col)
+	dd.create_oval(50-20-d,50-20-d, 50-d,50-d, fill=col,outline=col)
+
+
+
+	dd.create_polygon(10+d,d, 50-10-d,d, 50-d,10+d, 50-d,50-10-d, 50-10-d,50-d, 10+d,50-d, d,50-10-d, d,10+d,fill=col,outline=col )
+
 
 	if v==1:
 
-		dd.create_oval(25-4,25-4, 25+4,25+4,fill=col,outline=col)
+		dd.create_oval(25-4,25-4, 25+4,25+4,fill="#000000",outline="#000000")
 
 
 	elif v==2:
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col,outline=col	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill=col,outline=col)
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")
 
 	elif v==3:
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col,outline=col	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill=col,outline=col)	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
 
-		dd.create_oval(25-4,25-4, 25+4,25+4,fill=col,outline=col)	
+		dd.create_oval(25-4,25-4, 25+4,25+4,fill="#000000",outline="#000000")	
 	elif v==4:	
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col,outline=col	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill=col,outline=col)	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
 
-		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill=col,outline=col	)
-		dd.create_oval(10,10, 18,10+8,fill=col,outline=col)
+		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,10, 18,10+8,fill="#000000",outline="#000000")
 
 
 			
 	elif v==5:	
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col,outline=col	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill=col,outline=col)	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
 
-		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill=col,outline=col	)
-		dd.create_oval(10,10, 18,10+8,fill=col,outline=col)
+		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,10, 18,10+8,fill="#000000",outline="#000000")
 
-		dd.create_oval(25-4,25-4, 25+4,25+4,fill=col,outline=col)
+		dd.create_oval(25-4,25-4, 25+4,25+4,fill="#000000",outline="#000000")
 
 
 
 	elif v==6:	
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col,outline=col	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill=col,outline=col)	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
 
-		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill=col,outline=col	)
-		dd.create_oval(10,10, 18,10+8,fill=col,outline=col)
+		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill="#000000",outline="#000000"	)
+		dd.create_oval(10,10, 18,10+8,fill="#000000",outline="#000000")
 
-		dd.create_oval(10,25-4, 18,25+4,fill=col,outline=col)
-		dd.create_oval(50-10-8,25-4, 50-10,25+4,fill=col,outline=col)
+		dd.create_oval(10,25-4, 18,25+4,fill="#000000",outline="#000000")
+		dd.create_oval(50-10-8,25-4, 50-10,25+4,fill="#000000",outline="#000000")
 
 
 turn_=0
@@ -3163,7 +3173,49 @@ def draw_bg():
 	y_=y+s*9
 
 
-	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[0], alpha=.3)
+
+
+	ar=[int(x_),int(y_), int(x_+s*3),int(y_)]
+
+	a_=90
+	cx,cy=x_+s*3-15,y_+s*6-15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_-=1
+
+
+	a_=0
+	cx,cy=x_+15,y_+s*6-15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_-=1
+
+	ar.append(int(x_))
+	ar.append(int(y_))
+
+
+	create_polygon(*ar, fill=game1[0], alpha=0.4)
+
+
+
+
+
 
 	for _y in range(6):
 
@@ -3187,8 +3239,39 @@ def draw_bg():
 			can.create_rectangle(x_,y_, x_+s,y_+s,fill=col,outline=col2)
 
 		else:
+			if _y==5:
+				ar=[x_,y_, x_+s,y_, x_+s,y_+s]
 
-			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
+
+
+
+				cx,cy=x_+15,y_+s-15
+
+				a_=0
+
+				for a in range(90):
+
+					xx=15*math.sin(math.radians(a_))+cx
+					yy=15*math.cos(math.radians(a_))+cy
+
+					ar.append(xx)
+					ar.append(yy)
+
+
+					a_-=1
+
+				ar.append(x_)
+				ar.append(y_)
+
+
+
+
+				can.create_line(ar,fill=col2)
+
+			else:
+
+
+				can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 
 
 		y_+=s
@@ -3246,7 +3329,42 @@ def draw_bg():
 			col="darkblue"
 			col2="#3f5bff"
 
-		can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
+
+
+
+		if _y==5:
+			ar=[x_+s,y_, x_,y_, x_,y_+s]
+
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=0
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_+=1
+
+			ar.append(x_+s)
+			ar.append(y_)
+
+
+
+
+			can.create_line(ar,fill=col2)
+
+		else:
+
+			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 
 
 		y_+=s
@@ -3266,7 +3384,50 @@ def draw_bg():
 
 	x_,y_=x,y+s*6
 
-	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[1], alpha=.3)
+
+
+
+
+
+	ar=[int(x_+s*6),int(y_), int(x_+s*6),int(y_+s*3)]
+
+	a_=0
+	cx,cy=x_+15,y_+s*3-15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_-=1
+
+
+	a_=270
+	cx,cy=x_+15,y_+15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_-=1
+
+	ar.append(int(x_+s*6))
+	ar.append(int(y_))
+
+
+	create_polygon(*ar, fill=game1[1], alpha=0.4)
+
+
+
 
 	for _x in range(6):
 
@@ -3288,7 +3449,40 @@ def draw_bg():
 			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 		else:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+
+
+			if _x==0:
+				ar=[x_,y_+s, x_+s,y_+s, x_+s,y_]
+
+
+
+
+				cx,cy=x_+15,y_+s-15
+
+				a_=180
+
+				for a in range(90):
+
+					xx=15*math.sin(math.radians(a_))+cx
+					yy=15*math.cos(math.radians(a_))+cy
+
+					ar.append(xx)
+					ar.append(yy)
+
+
+
+					a_+=1
+
+				ar.append(x_)
+				ar.append(y_+s)
+
+
+
+
+				can.create_line(ar,fill=col2)
+			else:
+				can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		x_+=s
 
@@ -3342,9 +3536,42 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+		if _x==0:
+			ar=[x_,y_, x_+s,y_, x_+s,y_+s]
+
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=0
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_-=1
+
+			ar.append(x_)
+			ar.append(y_)
+
+
+
+
+			can.create_line(ar,fill=col2)
+		else:
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		x_+=s
+
+
 
 
 
@@ -3362,11 +3589,58 @@ def draw_bg():
 	draw_star(x+s+s*1/8,y+s*6+s*1/8,game1[1])
 
 
+	#3
+
+
 
 	x_=x+s*6
 	y_=y
 
-	create_rectangle(can,x_, y_, x_+s*3, y_+s*6, fill=game1[2], alpha=.3)
+
+
+
+
+	ar=[int(x_),int(y_+s*6), int(x_+s*3),int(y_+s*6)]
+
+	a_=90
+	cx,cy=x_+s*3-15,y_+15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_+=1
+
+
+	a_=180
+	cx,cy=x_+15,y_+15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_+=1
+
+	ar.append(int(x_))
+	ar.append(int(y_+s*6))
+
+
+	create_polygon(*ar, fill=game1[2], alpha=0.4)
+
+
+
+
+
 
 	for _y in range(6):
 
@@ -3384,7 +3658,40 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+
+		if _y==0:
+			ar=[x_+s,y_, x_+s,y_+s, x_,y_+s]
+
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=270
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_-=1
+
+			ar.append(x_+s)
+			ar.append(y_)
+
+
+
+
+			can.create_line(ar,fill=col2)
+		else:
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
 		y_+=s
 
 
@@ -3450,7 +3757,39 @@ def draw_bg():
 			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 
 		else:
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+
+			if _y==0:
+				ar=[x_,y_, x_,y_+s, x_+s,y_+s]
+
+
+
+
+				cx,cy=x_+15,y_+s-15
+
+				a_=90
+
+				for a in range(90):
+
+					xx=15*math.sin(math.radians(a_))+cx
+					yy=15*math.cos(math.radians(a_))+cy
+
+					ar.append(xx)
+					ar.append(yy)
+
+
+
+					a_+=1
+
+				ar.append(x_)
+				ar.append(y_)
+
+
+
+
+				can.create_line(ar,fill=col2)
+			else:
+				can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		y_+=s
 
@@ -3466,11 +3805,54 @@ def draw_bg():
 	draw_star(x+s*8+s*1/8,y+s+s*1/8,game1[2])
 
 
+	#4
+
+
 
 	x_=x+s*9
 	y_=y+s*6
 
-	create_rectangle(can,x_, y_, x_+s*6, y_+s*3, fill=game1[3], alpha=.3)
+
+
+	ar=[int(x_),int(y_), int(x_),int(y_+s*3)]
+
+	a_=0
+	cx,cy=x_+s*6-15,y_+s*3-15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_+=1
+
+
+	a_=90
+	cx,cy=x_+s*6-15,y_+15
+
+	for a in range(90):
+
+		xx=15*math.sin(math.radians(a_))+cx
+		yy=15*math.cos(math.radians(a_))+cy
+
+
+		ar.append(int(xx))
+		ar.append(int(yy))
+
+		a_+=1
+
+	ar.append(int(x_))
+	ar.append(int(y_))
+
+
+	create_polygon(*ar, fill=game1[3], alpha=0.4)
+
+
+
 
 	for _x in range(6):
 
@@ -3491,8 +3873,37 @@ def draw_bg():
 
 
 
+		if _x==5:
+			ar=[x_,y_, x_,y_+s, x_+s,y_+s]
 
-		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=90
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_+=1
+
+			ar.append(x_)
+			ar.append(y_)
+
+
+
+
+			can.create_line(ar,fill=col2)
+		else:
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		x_+=s
 
@@ -3560,7 +3971,42 @@ def draw_bg():
 			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 
 		else:
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+
+
+
+			if _x==5:
+				ar=[x_+s,y_, x_,y_, x_,y_+s]
+
+
+
+
+				cx,cy=x_+15,y_+s-15
+
+				a_=0
+
+				for a in range(90):
+
+					xx=15*math.sin(math.radians(a_))+cx
+					yy=15*math.cos(math.radians(a_))+cy
+
+					ar.append(xx)
+					ar.append(yy)
+
+
+
+					a_+=1
+
+				ar.append(x_+s)
+				ar.append(y_)
+
+
+
+
+				can.create_line(ar,fill=col2)
+			else:
+				can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
 
 
 		
@@ -3604,13 +4050,13 @@ def draw_bg():
 	x_=x+s*6
 	y_=y+s*6
 
-	create_polygon(int(x_),int(y_), int(x_+s+s/2), int(y_+s+s/2), int(x_),int(y_+s*3), fill=game1[1], alpha=0.6)
-	create_polygon(int(x_),int(y_), int(x_+s+s/2), int(y_+s+s/2), int(x_+s*3),int(y_),fill=game1[2], alpha=0.6)
+	create_polygon(int(x_),int(y_), int(x_+s+s/2), int(y_+s+s/2), int(x_),int(y_+s*3), fill=game1[1], alpha=0.7)
+	create_polygon(int(x_),int(y_), int(x_+s+s/2), int(y_+s+s/2), int(x_+s*3),int(y_),fill=game1[2], alpha=0.7)
 	x_=x+s*9
 	y_=y+s*9
 
-	create_polygon(int(x_),int(y_), int(x_-s-s/2), int(y_-s-s/2), int(x_),int(y_-s*3),fill=game1[3], alpha=0.6)
-	create_polygon(int(x_),int(y_), int(x_-s-s/2), int(y_-s-s/2), int(x_-s*3),int(y_),fill=game1[0], alpha=0.6)
+	create_polygon(int(x_),int(y_), int(x_-s-s/2), int(y_-s-s/2), int(x_),int(y_-s*3),fill=game1[3], alpha=0.7)
+	create_polygon(int(x_),int(y_), int(x_-s-s/2), int(y_-s-s/2), int(x_-s*3),int(y_),fill=game1[0], alpha=0.7)
 
 
 
@@ -3736,7 +4182,7 @@ def sel_col():
 
 
 
-	create_rectangle(can,0, 0, 590, 590, fill='#000000', alpha=.3)
+	create_rectangle(can,0, 0, 590, 590, fill='#000000', alpha=.5)
 
 
 	
@@ -3750,7 +4196,7 @@ def sel_col():
 
 
 
-	can.create_text(wd/2, ht/2-70,text="Select",font=("FreeMono",20),fill="#f5f5f5")
+	#can.create_text(wd/2, ht/2-70,text="Select",font=("FreeMono",20),fill="#f5f5f5")
 
 
 
@@ -3770,7 +4216,9 @@ def sel_col():
 		if not choice=="":
 			if _==ar.index(choice):
 
-				can.create_oval(x_,ht/2-50, x_+100,ht/2+50,outline=ar2[_])
+				can.create_line(x_+20,ht/2+50, x_+100-20,ht/2+50,fill=ar2[_],width=2)
+
+
 
 
 		#print(x_+50)
