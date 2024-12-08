@@ -2280,16 +2280,17 @@ def _dice_(dd,v,col):
 
 
 	d=3
+	r=7
 
-	dd.create_oval(d,d, 20+d,20+d, fill=col,outline=col)
-	dd.create_oval(d,50-20-d, 20+d,50-d, fill=col,outline=col)
+	dd.create_oval(d,d, r*2+d,r*2+d, fill=col,outline=col)
+	dd.create_oval(d,50-r*2-d, r*2+d,50-d, fill=col,outline=col)
 
-	dd.create_oval(50-20-d,d, 50-d,20+d, fill=col,outline=col)
-	dd.create_oval(50-20-d,50-20-d, 50-d,50-d, fill=col,outline=col)
+	dd.create_oval(50-r*2-d,d, 50-d,r*2+d, fill=col,outline=col)
+	dd.create_oval(50-r*2-d,50-r*2-d, 50-d,50-d, fill=col,outline=col)
 
 
 
-	dd.create_polygon(10+d,d, 50-10-d,d, 50-d,10+d, 50-d,50-10-d, 50-10-d,50-d, 10+d,50-d, d,50-10-d, d,10+d,fill=col,outline=col )
+	dd.create_polygon(r+d,d, 50-r-d,d, 50-d,r+d, 50-d,50-r-d, 50-r-d,50-d, r+d,50-d, d,50-r-d, d,r+d,fill=col,outline=col )
 
 
 	if v==1:
@@ -2967,6 +2968,84 @@ def draw_bg():
 		c="darkblue"
 		c2="#3f5bff"
 		c3="%02x%02x%02x" % (0,0,int(255/4))
+
+
+	def draw_round_rec(x_,y_,col,opacity):
+
+		ar=[]
+
+		cx,cy=x_+15,y_+15
+
+		a_=270
+
+		for a in range(90):
+
+			x=15*math.sin(math.radians(a_))+cx
+			y=15*math.cos(math.radians(a_))+cy
+
+
+			ar.append(int(x))
+			ar.append(int(y))
+
+			a_-=1
+
+
+
+		cx,cy=x_+s*4-15,y_+15
+
+		a_=180
+
+		for a in range(90):
+
+			x=15*math.sin(math.radians(a_))+cx
+			y=15*math.cos(math.radians(a_))+cy
+
+
+			ar.append(int(x))
+			ar.append(int(y))
+
+			a_-=1
+
+
+
+		cx,cy=x_+s*4-15,y_+s*4-15
+
+		a_=90
+
+		for a in range(90):
+
+			x=15*math.sin(math.radians(a_))+cx
+			y=15*math.cos(math.radians(a_))+cy
+
+
+			ar.append(int(x))
+			ar.append(int(y))
+
+			a_-=1
+
+
+
+
+
+		cx,cy=x_+15,y_+s*4-15
+
+		a_=0
+
+		for a in range(90):
+
+			x=15*math.sin(math.radians(a_))+cx
+			y=15*math.cos(math.radians(a_))+cy
+
+
+			ar.append(int(x))
+			ar.append(int(y))
+
+			a_-=1
+
+
+		create_polygon(*ar, fill=col, alpha=opacity)
+
+
 
 
 
