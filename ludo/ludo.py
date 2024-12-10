@@ -5241,7 +5241,7 @@ root.geometry(str(wd)+"x"+str(ht)+"+"+str(int((w-wd)/2))+"+"+str(0))
 root.title("hludo")
 root.iconbitmap("data/dice.ico")
 root.resizable(0,0)
-root.wm_attributes("-alpha",0.9)
+root.wm_attributes("-alpha",0.95)
 
 
 
