@@ -3287,18 +3287,22 @@ def draw_bg():
 	for _y in range(6):
 
 
+		r=3.5
+
+
 		if game1[0]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[0]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[0]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[0]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 
 
@@ -3353,18 +3357,23 @@ def draw_bg():
 
 
 
+
+		r=3.5
+
+
 		if game1[0]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[0]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[0]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[0]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 		if _y==5:
 
@@ -3381,21 +3390,21 @@ def draw_bg():
 	y_=y+s*9
 	for _y in range(6):
 
+		r=3.5
 
 
 		if game1[0]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[0]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[0]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[0]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
-
 
 
 
@@ -3498,18 +3507,23 @@ def draw_bg():
 
 	for _x in range(6):
 
+
+		r=3.5
+
+
 		if game1[1]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[1]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[1]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[1]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 		if _x==1:
 
@@ -3559,17 +3573,20 @@ def draw_bg():
 	for _x in range(6):
 		col=game1[1]
 
+		r=3.5
+
+
 		if game1[1]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[1]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[1]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[1]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
 
 		if _x==0:
@@ -3588,19 +3605,22 @@ def draw_bg():
 	x_,y_=x,y+s*8
 
 	for _x in range(6):
+		r=3.5
+
 
 		if game1[1]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[1]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[1]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[1]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 
 
@@ -3711,17 +3731,20 @@ def draw_bg():
 
 	for _y in range(6):
 
+		r=3.5
+
+
 		if game1[2]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[2]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[2]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[2]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
 
 
@@ -3767,19 +3790,22 @@ def draw_bg():
 
 	for _y in range(6):
 
+		r=3.5
+
 
 		if game1[2]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[2]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[2]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[2]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 		if _y==0:
 
@@ -3804,17 +3830,20 @@ def draw_bg():
 	for _y in range(6):
 
 
+		r=3.5
+
+
 		if game1[2]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[2]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[2]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[2]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
 
 
@@ -3923,20 +3952,21 @@ def draw_bg():
 
 	for _x in range(6):
 
+		r=3.5
+
+
 		if game1[3]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[3]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[3]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[3]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
-
-
 
 
 
@@ -3982,19 +4012,22 @@ def draw_bg():
 		col=game1[3]
 
 
+		r=3.5
+
 
 		if game1[3]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[3]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[3]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[3]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 
 
@@ -4019,18 +4052,22 @@ def draw_bg():
 
 	for _x in range(6):
 
+		r=3.5
+
+
 		if game1[3]=="red":
-			col="darkred"
+			col="#%02x%02x%02x"%(int(255/r),0,0)
 			col2="red"
 		elif game1[3]=="green":
-			col="green"
+			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
 		elif game1[3]=="yellow":
-			col="#b8b803"
+			col="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 			col2="yellow"
 		elif game1[3]=="blue":
-			col="darkblue"
+			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
+
 
 
 		if _x==4:
