@@ -4,7 +4,6 @@ from PIL import Image,ImageTk,ImageDraw
 import math
 import time
 
-
 def wins():
 	global state,game1,winners,crown
 
@@ -2279,6 +2278,20 @@ def _dice_(dd,v,col):
 	dd.delete("all")	
 
 
+	r=3.5
+
+	if col=="red":
+		col2="#%02x%02x%02x"%(int(255/r),0,0)
+	elif col=="lime":
+		col2="#%02x%02x%02x"%(0,int(255/r),0)
+	elif col=="yellow":
+		col2="#%02x%02x%02x"%(int(255/r),int(255/r),0)
+	elif col=="#3f5bff":
+		col2="#%02x%02x%02x"%(0,0,int(255/r))
+
+
+
+
 	d=3
 	r=7
 
@@ -2295,51 +2308,51 @@ def _dice_(dd,v,col):
 
 	if v==1:
 
-		dd.create_oval(25-4,25-4, 25+4,25+4,fill="#000000",outline="#000000")
+		dd.create_oval(25-4,25-4, 25+4,25+4,fill=col2,outline=col2)
 
 
 	elif v==2:
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col2,outline=col2)
+		dd.create_oval(10,50-10-8, 18,50-10,fill=col2,outline=col2)
 
 	elif v==3:
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col2,outline=col2)
+		dd.create_oval(10,50-10-8, 18,50-10,fill=col2,outline=col2)	
 
-		dd.create_oval(25-4,25-4, 25+4,25+4,fill="#000000",outline="#000000")	
+		dd.create_oval(25-4,25-4, 25+4,25+4,fill=col2,outline=col2)	
 	elif v==4:	
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col2,outline=col2)
+		dd.create_oval(10,50-10-8, 18,50-10,fill=col2,outline=col2)	
 
-		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,10, 18,10+8,fill="#000000",outline="#000000")
+		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill=col2,outline=col2)
+		dd.create_oval(10,10, 18,10+8,fill=col2,outline=col2)
 
 
 			
 	elif v==5:	
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col2,outline=col2)
+		dd.create_oval(10,50-10-8, 18,50-10,fill=col2,outline=col2)	
 
-		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,10, 18,10+8,fill="#000000",outline="#000000")
+		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill=col2,outline=col2)
+		dd.create_oval(10,10, 18,10+8,fill=col2,outline=col2)
 
-		dd.create_oval(25-4,25-4, 25+4,25+4,fill="#000000",outline="#000000")
+		dd.create_oval(25-4,25-4, 25+4,25+4,fill=col2,outline=col2)
 
 
 
 	elif v==6:	
 
-		dd.create_oval(50-10-8,10, 50-10,10+8,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,50-10-8, 18,50-10,fill="#000000",outline="#000000")	
+		dd.create_oval(50-10-8,10, 50-10,10+8,fill=col2,outline=col2)
+		dd.create_oval(10,50-10-8, 18,50-10,fill=col2,outline=col2)	
 
-		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill="#000000",outline="#000000"	)
-		dd.create_oval(10,10, 18,10+8,fill="#000000",outline="#000000")
+		dd.create_oval(50-10-8,50-10-8, 50-10,50-10,fill=col2,outline=col2)
+		dd.create_oval(10,10, 18,10+8,fill=col2,outline=col2)
 
-		dd.create_oval(10,25-4, 18,25+4,fill="#000000",outline="#000000")
-		dd.create_oval(50-10-8,25-4, 50-10,25+4,fill="#000000",outline="#000000")
+		dd.create_oval(10,25-4, 18,25+4,fill=col2,outline=col2)
+		dd.create_oval(50-10-8,25-4, 50-10,25+4,fill=col2,outline=col2)
 
 
 turn_=0
@@ -2947,27 +2960,21 @@ def draw_bg():
 	#can.create_rectangle(x,y+s*9,x+s*6,y+s*15,fill=game1[0],outline="#000000")
 
 
+
+	r=3.5
+
 	if game1[0]=="red":
-		c="darkred"
+		c="#%02x%02x%02x"%(int(255/r),0,0)
 		c2="red"
-		c3="#%02x%02x%02x" % (int(255/4),0,0)
-
-	if game1[0]=="green":
-		c="darkgreen"
+	elif game1[0]=="green":
+		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
-		c3="#%02x%02x%02x" % (0,int(255/4),0)
-
-
-	if game1[0]=="yellow":
-		c="#7f7f00"
+	elif game1[0]=="yellow":
+		c="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 		c2="yellow"
-		c3="#%02x%02x%02x" % (int(255/4),int(255/4),0)
-
-
-	if game1[0]=="blue":
-		c="darkblue"
+	elif game1[0]=="blue":
+		c="#%02x%02x%02x"%(0,0,int(255/r))
 		c2="#3f5bff"
-		c3="%02x%02x%02x" % (0,0,int(255/4))
 
 
 	def draw_round_rec(x_,y_,col,opacity):
@@ -3082,27 +3089,23 @@ def draw_bg():
 
 
 
+
+
+
+	r=3.5
+
 	if game1[1]=="red":
-		c="darkred"
+		c="#%02x%02x%02x"%(int(255/r),0,0)
 		c2="red"
-		c3="#%02x%02x%02x" % (int(255/4),0,0)
-
-	if game1[1]=="green":
-		c="darkgreen"
+	elif game1[1]=="green":
+		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
-		c3="#%02x%02x%02x" % (0,int(255/4),0)
-
-
-	if game1[1]=="yellow":
-		c="#7f7f00"
+	elif game1[1]=="yellow":
+		c="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 		c2="yellow"
-		c3="#%02x%02x%02x" % (int(255/4),int(255/4),0)
-
-
-	if game1[1]=="blue":
-		c="darkblue"
+	elif game1[1]=="blue":
+		c="#%02x%02x%02x"%(0,0,int(255/r))
 		c2="#3f5bff"
-		c3="%02x%02x%02x" % (0,0,int(255/4))
 
 
 	bx,by=x+s,y+s
@@ -3132,29 +3135,21 @@ def draw_bg():
 
 
 
+
+	r=3.5
+
 	if game1[2]=="red":
-		c="darkred"
+		c="#%02x%02x%02x"%(int(255/r),0,0)
 		c2="red"
-		c3="#%02x%02x%02x" % (int(255/4),0,0)
-
-	if game1[2]=="green":
-		c="darkgreen"
+	elif game1[2]=="green":
+		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
-		c3="#%02x%02x%02x" % (0,int(255/4),0)
-
-
-	if game1[2]=="yellow":
-		c="#7f7f00"
+	elif game1[2]=="yellow":
+		c="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 		c2="yellow"
-		c3="#%02x%02x%02x" % (int(255/4),int(255/4),0)
-
-
-	if game1[2]=="blue":
-		c="darkblue"
+	elif game1[2]=="blue":
+		c="#%02x%02x%02x"%(0,0,int(255/r))
 		c2="#3f5bff"
-		c3="%02x%02x%02x" % (0,0,int(255/4))
-
-	
 
 
 	bx,by=x+s*10,y+s
@@ -3184,28 +3179,21 @@ def draw_bg():
 
 
 
+
+	r=3.5
+
 	if game1[3]=="red":
-		c="darkred"
+		c="#%02x%02x%02x"%(int(255/r),0,0)
 		c2="red"
-		c3="#%02x%02x%02x" % (int(255/4),0,0)
-
-	if game1[3]=="green":
-		c="darkgreen"
+	elif game1[3]=="green":
+		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
-		c3="#%02x%02x%02x" % (0,int(255/4),0)
-
-
-	if game1[3]=="yellow":
-		c="#7f7f00"
+	elif game1[3]=="yellow":
+		c="#%02x%02x%02x"%(int(255/r),int(255/r),0)
 		c2="yellow"
-		c3="#%02x%02x%02x" % (int(255/4),int(255/4),0)
-
-
-	if game1[3]=="blue":
-		c="darkblue"
+	elif game1[3]=="blue":
+		c="#%02x%02x%02x"%(0,0,int(255/r))
 		c2="#3f5bff"
-		c3="#%02x%02x%02x" % (0,0,int(255/4))
-
 
 
 
