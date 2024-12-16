@@ -26,9 +26,21 @@ def wins():
 					y=590-70-50-30-50
 
 					can.create_image(x,y,image=crown,anchor="nw")
+
+					pos=winners.index(c)+1
+
+					if pos==1:
+						pos=str(pos)+"st"
+					elif pos==2:
+						pos=str(pos)+"nd"
+					elif pos==3:
+						pos=str(pos)+"rd"
+					elif pos==4:
+						pos=str(pos)+"th"
+
 					
 
-					can.create_text(35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					
 				elif wv==3:
 					x=590-60
@@ -36,8 +48,18 @@ def wins():
 
 					can.create_image(x,y,image=crown,anchor="nw")
 					
+					pos=winners.index(c)+1
 
-					can.create_text(590-35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					if pos==1:
+						pos=str(pos)+"st"
+					elif pos==2:
+						pos=str(pos)+"nd"
+					elif pos==3:
+						pos=str(pos)+"rd"
+					elif pos==4:
+						pos=str(pos)+"th"
+
+					can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					
 
 
@@ -48,17 +70,38 @@ def wins():
 
 					can.create_image(x,y,image=crown,anchor="nw")
 					
+					pos=winners.index(c)+1
 
-					can.create_text(35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					if pos==1:
+						pos=str(pos)+"st"
+					elif pos==2:
+						pos=str(pos)+"nd"
+					elif pos==3:
+						pos=str(pos)+"rd"
+					elif pos==4:
+						pos=str(pos)+"th"
+
+					can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					
 				elif wv==2:
 					x=590-60
 					y=70+50+10
 
 					can.create_image(x,y,image=crown,anchor="nw")
+
+					pos=winners.index(c)+1
+
+					if pos==1:
+						pos=str(pos)+"st"
+					elif pos==2:
+						pos=str(pos)+"nd"
+					elif pos==3:
+						pos=str(pos)+"rd"
+					elif pos==4:
+						pos=str(pos)+"th"
 					
 
-					can.create_text(590-35,y+60,text=str(winners.index(c)+1),font=("FreeMono",13),fill="#faea95")
+					can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 
 
 
