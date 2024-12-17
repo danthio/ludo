@@ -3320,7 +3320,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[0], alpha=0.4)
+	create_polygon(*ar, fill=game1[0], alpha=0.35)
 
 
 
@@ -3350,7 +3350,7 @@ def draw_bg():
 
 
 		if _y==4:
-			can.create_rectangle(x_,y_, x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 
 		else:
 			if _y==5:
@@ -3423,7 +3423,7 @@ def draw_bg():
 			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 		else:
 
-			can.create_rectangle(x_,y_, x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 
 
 		y_+=s
@@ -3543,7 +3543,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[1], alpha=0.4)
+	create_polygon(*ar, fill=game1[1], alpha=0.35)
 
 
 
@@ -3570,7 +3570,7 @@ def draw_bg():
 
 		if _x==1:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 		else:
 
 
@@ -3636,7 +3636,7 @@ def draw_bg():
 
 			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 		else:
-			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
@@ -3765,7 +3765,7 @@ def draw_bg():
 	ar.append(int(y_+s*6))
 
 
-	create_polygon(*ar, fill=game1[2], alpha=0.4)
+	create_polygon(*ar, fill=game1[2], alpha=0.35)
 
 
 
@@ -3854,7 +3854,7 @@ def draw_bg():
 
 			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 		else:
-			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
@@ -3893,7 +3893,7 @@ def draw_bg():
 
 		if _y==1:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		else:
 
@@ -3988,7 +3988,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[3], alpha=0.4)
+	create_polygon(*ar, fill=game1[3], alpha=0.35)
 
 
 
@@ -4081,7 +4081,7 @@ def draw_bg():
 
 		else:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
@@ -4115,7 +4115,7 @@ def draw_bg():
 
 		if _x==4:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s ,outline=col2)
 
 		else:
 
