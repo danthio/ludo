@@ -3418,12 +3418,8 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		if _y==5:
 
-			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
-		else:
-
-			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
+		can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 
 
 		y_+=s
@@ -3568,45 +3564,41 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		if _x==1:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+
+
+		if _x==0:
+			ar=[x_,y_+s, x_+s,y_+s, x_+s,y_]
+
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=180
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_+=1
+
+			ar.append(x_)
+			ar.append(y_+s)
+
+
+
+
+			can.create_line(ar,fill=col2)
 		else:
-
-
-
-
-			if _x==0:
-				ar=[x_,y_+s, x_+s,y_+s, x_+s,y_]
-
-
-
-
-				cx,cy=x_+15,y_+s-15
-
-				a_=180
-
-				for a in range(90):
-
-					xx=15*math.sin(math.radians(a_))+cx
-					yy=15*math.cos(math.radians(a_))+cy
-
-					ar.append(xx)
-					ar.append(yy)
-
-
-
-					a_+=1
-
-				ar.append(x_)
-				ar.append(y_+s)
-
-
-
-
-				can.create_line(ar,fill=col2)
-			else:
-				can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		x_+=s
 
@@ -3632,11 +3624,8 @@ def draw_bg():
 			col="#%02x%02x%02x"%(0,0,int(255/r))
 			col2="#3f5bff"
 
-		if _x==0:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
-		else:
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
@@ -3850,11 +3839,7 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		if _y==0:
-
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
-		else:
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
@@ -3891,44 +3876,39 @@ def draw_bg():
 
 
 
-		if _y==1:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
+		if _y==0:
+			ar=[x_,y_, x_,y_+s, x_+s,y_+s]
+
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=90
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_+=1
+
+			ar.append(x_)
+			ar.append(y_)
+
+
+
+
+			can.create_line(ar,fill=col2)
 		else:
-
-
-			if _y==0:
-				ar=[x_,y_, x_,y_+s, x_+s,y_+s]
-
-
-
-
-				cx,cy=x_+15,y_+s-15
-
-				a_=90
-
-				for a in range(90):
-
-					xx=15*math.sin(math.radians(a_))+cx
-					yy=15*math.cos(math.radians(a_))+cy
-
-					ar.append(xx)
-					ar.append(yy)
-
-
-
-					a_+=1
-
-				ar.append(x_)
-				ar.append(y_)
-
-
-
-
-				can.create_line(ar,fill=col2)
-			else:
-				can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		y_+=s
 
@@ -4074,14 +4054,7 @@ def draw_bg():
 
 
 
-		if _x==5:
-			
-
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
-
-		else:
-
-			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
@@ -4113,46 +4086,40 @@ def draw_bg():
 
 
 
-		if _x==4:
 
-			can.create_rectangle(x_,y_,x_+s,y_+s ,outline=col2)
 
+
+		if _x==5:
+			ar=[x_+s,y_, x_,y_, x_,y_+s]
+
+
+
+
+			cx,cy=x_+15,y_+s-15
+
+			a_=0
+
+			for a in range(90):
+
+				xx=15*math.sin(math.radians(a_))+cx
+				yy=15*math.cos(math.radians(a_))+cy
+
+				ar.append(xx)
+				ar.append(yy)
+
+
+
+				a_+=1
+
+			ar.append(x_+s)
+			ar.append(y_)
+
+
+
+
+			can.create_line(ar,fill=col2)
 		else:
-
-
-
-
-			if _x==5:
-				ar=[x_+s,y_, x_,y_, x_,y_+s]
-
-
-
-
-				cx,cy=x_+15,y_+s-15
-
-				a_=0
-
-				for a in range(90):
-
-					xx=15*math.sin(math.radians(a_))+cx
-					yy=15*math.cos(math.radians(a_))+cy
-
-					ar.append(xx)
-					ar.append(yy)
-
-
-
-					a_+=1
-
-				ar.append(x_+s)
-				ar.append(y_)
-
-
-
-
-				can.create_line(ar,fill=col2)
-			else:
-				can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 
 
