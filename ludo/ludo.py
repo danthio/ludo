@@ -2579,6 +2579,31 @@ def main():
 
 					ar.append([game2[i][:3],[col]])
 
+		for _ in range(len(ar)):
+			if len(ar[_][1])>1:
+
+				try:
+					v=ar[_][1].index(game1[0])
+
+					a=[]
+
+					for i in ar[_][1]:
+
+						if i==game1[0]:
+							a.append(i)
+					for i in ar[_][1]:
+
+						if not i==game1[0]:
+							a.append(i)
+
+					ar[_][1]=a
+				except:
+					pass
+
+
+
+
+
 		n=0
 
 
