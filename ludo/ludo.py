@@ -3320,7 +3320,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[0], alpha=0.35)
+	create_polygon(*ar, fill=game1[0], alpha=0.3)
 
 
 
@@ -3539,7 +3539,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[1], alpha=0.35)
+	create_polygon(*ar, fill=game1[1], alpha=0.3)
 
 
 
@@ -3754,7 +3754,7 @@ def draw_bg():
 	ar.append(int(y_+s*6))
 
 
-	create_polygon(*ar, fill=game1[2], alpha=0.35)
+	create_polygon(*ar, fill=game1[2], alpha=0.3)
 
 
 
@@ -3968,7 +3968,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[3], alpha=0.35)
+	create_polygon(*ar, fill=game1[3], alpha=0.3)
 
 
 
@@ -4376,8 +4376,8 @@ def draw_pointer(x,y,sz,col,i):
 
 		a-=1
 
-	ar2.append(x)
-	ar2.append(y)
+	#ar2.append(x)
+	#ar2.append(y)
 
 	a=-90+20
 
