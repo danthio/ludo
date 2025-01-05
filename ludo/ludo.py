@@ -25,7 +25,7 @@ def wins():
 					x=10
 					y=590-70-50-30-50
 
-					can.create_image(x,y,image=crown,anchor="nw")
+					
 
 					pos=winners.index(c)+1
 
@@ -38,15 +38,20 @@ def wins():
 					elif pos==4:
 						pos=str(pos)+"th"
 
+					if pos=="1st":
+						can.create_image(x,y,image=crown,anchor="nw")
+						can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					else:
+						can.create_text(35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
+
 					
 
-					can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					
 					
 				elif wv==3:
 					x=590-60
 					y=590-70-50-30-50
 
-					can.create_image(x,y,image=crown,anchor="nw")
 					
 					pos=winners.index(c)+1
 
@@ -59,16 +64,19 @@ def wins():
 					elif pos==4:
 						pos=str(pos)+"th"
 
-					can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
-					
+					if pos=="1st":
+						can.create_image(x,y,image=crown,anchor="nw")
+						can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					else:
+						can.create_text(590-35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
 
+					
 
 				elif wv==1:
 
 					x=10
 					y=70+50+10
 
-					can.create_image(x,y,image=crown,anchor="nw")
 					
 					pos=winners.index(c)+1
 
@@ -81,14 +89,18 @@ def wins():
 					elif pos==4:
 						pos=str(pos)+"th"
 
-					can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					if pos=="1st":
+						can.create_image(x,y,image=crown,anchor="nw")
+						can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					else:
+						can.create_text(35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
+
+					
 					
 				elif wv==2:
 					x=590-60
 					y=70+50+10
 
-					can.create_image(x,y,image=crown,anchor="nw")
-
 					pos=winners.index(c)+1
 
 					if pos==1:
@@ -101,9 +113,13 @@ def wins():
 						pos=str(pos)+"th"
 					
 
-					can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					if pos=="1st":
+						can.create_image(x,y,image=crown,anchor="nw")
+						can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
+					else:
+						can.create_text(590-35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
 
-
+					
 
 
 
@@ -2411,11 +2427,18 @@ for _ in range(int(4*4*3)):
 	ar_p.append(0)
 
 
+_gm=0
+sc=0
+
+
 def main():
 	global state
 	global can, game1,game2,turn
 	global turn_,ar_crown,ar_p
 	global stop,stop_
+	global _gm,game_mode
+	global wd
+	global sc
 
 
 	if state=="game":
@@ -2430,9 +2453,31 @@ def main():
 		if game1[0]=="yellow":
 			cc="#aa9208"
 
-		
+
+		if sc==0:
+			col="red"
+		elif sc==1:
+			col="lime"
+		elif sc==2:
+			col="yellow"
+		elif sc==3:
+			col="#3f5bff"
+
+		if game_mode=="classic":
+			gm="Classic"
+		elif game_mode=="rush_mode":
+			gm="Rush Mode"
 
 
+
+		can.delete(_gm)
+		_gm=can.create_text(wd/2,15, text=gm, font=("FreeMono",13), fill=col)
+
+
+		sc+=1
+
+		if sc==3:
+			sc=0
 
 		
 
@@ -2975,8 +3020,6 @@ def arrows():
 
 
 
-
-
 def draw_bg():
 	global game1,game2,s,can,wd,st_,st_1,st_2,st_3,st_4,turn,game_mode
 
@@ -2985,12 +3028,15 @@ def draw_bg():
 	global state,quit,winners,crown
 
 	global bg
+	global game_mode
 
 
 
 	#can["bg"]="#000000"
 
 	can.delete("all")
+
+	
 
 
 
@@ -3375,7 +3421,7 @@ def draw_bg():
 
 
 		if _y==4:
-			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
+			can.create_rectangle(x_,y_, x_+s,y_+s,fill=col,outline=col2)
 
 		else:
 			if _y==5:
@@ -3443,8 +3489,12 @@ def draw_bg():
 			col2="#3f5bff"
 
 
+		if not _y==5:
+			can.create_rectangle(x_,y_, x_+s,y_+s,fill=col,outline=col2)
 
-		can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
+		else:
+
+			can.create_rectangle(x_,y_, x_+s,y_+s,outline=col2)
 
 
 		y_+=s
@@ -3622,6 +3672,8 @@ def draw_bg():
 
 
 			can.create_line(ar,fill=col2)
+		elif _x==1:
+			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 		else:
 			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
@@ -3650,7 +3702,13 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
+		if not _x==0:
+
+			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
+		else:
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+
 
 
 
@@ -3837,6 +3895,7 @@ def draw_bg():
 
 			can.create_line(ar,fill=col2)
 		else:
+
 			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
 		y_+=s
@@ -3864,7 +3923,11 @@ def draw_bg():
 			col2="#3f5bff"
 
 
-		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+		if _y==0:
+
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+		else:
+			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 
 
 
@@ -3932,6 +3995,9 @@ def draw_bg():
 
 
 			can.create_line(ar,fill=col2)
+
+		elif _y==1:
+			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 		else:
 			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
@@ -4077,9 +4143,11 @@ def draw_bg():
 			col2="#3f5bff"
 
 
+		if _x==5:
 
-
-		can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
+		else:
+			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 
 
 
@@ -4143,6 +4211,9 @@ def draw_bg():
 
 
 			can.create_line(ar,fill=col2)
+
+		elif _x==4:
+			can.create_rectangle(x_,y_,x_+s,y_+s,fill=col,outline=col2)
 		else:
 			can.create_rectangle(x_,y_,x_+s,y_+s,outline=col2)
 
