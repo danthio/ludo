@@ -4,8 +4,11 @@ from PIL import Image,ImageTk,ImageDraw
 import math
 import time
 
+
+
+
 def wins():
-	global state,game1,winners,crown
+	global state,game1,winners,crown,s
 
 	for c in game1:
 
@@ -42,7 +45,7 @@ def wins():
 						can.create_image(x,y,image=crown,anchor="nw")
 						can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					else:
-						can.create_text(35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
+						can.create_text(35,70+s*12,text=pos,font=("FreeMono",13),fill="#faea95")
 
 					
 
@@ -68,7 +71,7 @@ def wins():
 						can.create_image(x,y,image=crown,anchor="nw")
 						can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					else:
-						can.create_text(590-35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
+						can.create_text(590-35,70+s*12,text=pos,font=("FreeMono",13),fill="#faea95")
 
 					
 
@@ -93,7 +96,7 @@ def wins():
 						can.create_image(x,y,image=crown,anchor="nw")
 						can.create_text(35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					else:
-						can.create_text(35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
+						can.create_text(35,70+s*3,text=pos,font=("FreeMono",13),fill="#faea95")
 
 					
 					
@@ -117,7 +120,7 @@ def wins():
 						can.create_image(x,y,image=crown,anchor="nw")
 						can.create_text(590-35,y+60,text=pos,font=("FreeMono",13),fill="#faea95")
 					else:
-						can.create_text(590-35,y+15,text=pos,font=("FreeMono",13),fill="#faea95")
+						can.create_text(590-35,70+s*3,text=pos,font=("FreeMono",13),fill="#faea95")
 
 					
 
@@ -598,7 +601,7 @@ def return_home(p):
 			ar3.append(a)
 
 
-		if game2[a][:2]==[1,0] and game2[a][2]==a.split("_")[0]:
+		if game2[a][:2]==[1,0]:
 			ar3.append(a)
 
 	for a in ar3:
@@ -844,6 +847,9 @@ def move_1():
 
 				return_home(sel_1)
 				if val1==0:
+					dice_1_st=0
+
+				elif val1==6:
 					dice_1_st=0
 				else:
 					dice_2_st=0
@@ -1261,6 +1267,9 @@ def move_2():
 				return_home(sel_2)
 				if val2==0:
 					dice_2_st=0
+
+				elif val2==6:
+					dice_2_st=0
 				else:
 					
 					dice_2_st=2
@@ -1670,6 +1679,10 @@ def move_3():
 				return_home(sel_3)
 				if val3==0:
 					dice_3_st=0
+
+				elif val3==6:
+					dice_3_st=0
+
 				else:
 					
 					dice_3_st=2
@@ -2062,6 +2075,9 @@ def move_4():
 				return_home(sel_4)
 				if val4==0:
 					dice_4_st=0
+
+				elif val4==6:
+					dice_4_st=0
 				else:
 					dice_4_st=2
 					dice_1_st=0
@@ -2427,18 +2443,13 @@ for _ in range(int(4*4*3)):
 	ar_p.append(0)
 
 
-_gm=0
-sc=0
-
 
 def main():
 	global state
 	global can, game1,game2,turn
 	global turn_,ar_crown,ar_p
 	global stop,stop_
-	global _gm,game_mode
 	global wd
-	global sc
 
 
 	if state=="game":
@@ -2448,36 +2459,6 @@ def main():
 
 
 
-
-		cc=game1[0]
-		if game1[0]=="yellow":
-			cc="#aa9208"
-
-
-		if sc==0:
-			col="red"
-		elif sc==1:
-			col="lime"
-		elif sc==2:
-			col="yellow"
-		elif sc==3:
-			col="#3f5bff"
-
-		if game_mode=="classic":
-			gm="Classic"
-		elif game_mode=="rush_mode":
-			gm="Rush Mode"
-
-
-
-		can.delete(_gm)
-		_gm=can.create_text(wd/2,15, text=gm, font=("FreeMono",13), fill=col)
-
-
-		sc+=1
-
-		if sc==3:
-			sc=0
 
 		
 
@@ -2572,14 +2553,6 @@ def main():
 
 				turn_=can.create_polygon(590-70,580-70-100, 590-70,590-70, 590-70-100,590-70, 590-70-10,590-70-10, 590-70,580-70-100,  fill=cl,outline=cl)
 		
-
-
-
-
-		
-
-
-
 
 
 
@@ -3072,7 +3045,6 @@ def draw_bg():
 	#can.create_rectangle(x,y, x+s*15,y+s*15,outline="#000000")
 
 	#can.create_rectangle(x,y+s*9,x+s*6,y+s*15,fill=game1[0],outline="#000000")
-
 
 
 	r=3.5
@@ -4406,7 +4378,7 @@ def sel_col():
 
 
 
-	#can.create_text(wd/2, ht/2-70,text="Select",font=("FreeMono",20),fill="#f5f5f5")
+	can.create_text(wd/2, ht/2-70,text="Select Side",font=("FreeMono",15),fill="#f5f5f5")
 
 
 
@@ -5447,6 +5419,10 @@ return_home_4()
 
 
 _stop()
+
+
+
+
 
 root.mainloop()
 
