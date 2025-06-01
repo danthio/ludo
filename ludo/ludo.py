@@ -5,6 +5,10 @@ import math
 import time
 
 
+im=Image.open("data/blue_star.png")
+im=im.resize((22,22))
+im.save("data/blue_star.png")
+
 
 
 def wins():
@@ -662,6 +666,190 @@ def home_and_away(col):
 	return [home,away]
 
 
+def get_ava_pieces(pieces,val):
+
+	global game1,game2
+
+
+
+
+
+
+	def get_pos(p,val):
+
+
+		v=game2[p][-2]
+		m=game2[p][-3]
+
+		if p[0]=="r":
+
+			ind=game1.index("red")
+
+		elif p[0]=="g":
+
+			ind=game1.index("green")
+			
+		elif p[0]=="y":
+
+			ind=game1.index("yellow")
+			
+		elif p[0]=="b":
+
+			ind=game1.index("blue")
+
+
+		game1x=[]
+
+		for a in range(4):
+
+			game1x.append(game1[ind])
+
+			ind+=1
+
+			if ind==4:
+				ind=0
+
+		arx=game2[p]
+			
+
+
+		for v_ in range(val+1):
+
+
+
+
+
+
+			if 0<=v<=4:
+				arx=[1+m,0,game1x[0],m,v,0]
+
+			elif 5<=v<=10:
+
+				if v==5:
+					m=0
+
+
+				arx=[5-m,2,game1x[1],m,v,0]
+
+
+			elif v==11:
+
+
+				arx=[0,1,game1x[1],m,v,0]
+			elif 12<=v<=17:
+				if v==12:
+					m=0
+
+				arx=[m,0,game1x[1],m,v,0]
+			elif 18<=v<=23:
+				if v==18:
+					m=0
+
+				arx=[5-m,2,game1x[2],m,v,0]
+			elif v==24:
+
+
+				arx=[0,1,game1x[2],m,v,0]
+			elif 25<=v<=30:
+				if v==25:
+					m=0
+				arx=[m,0,game1x[2],m,v,0]
+
+			elif 31<=v<=36:
+				if v==31:
+					m=0
+
+
+				arx=[5-m,2,game1x[3],m,v,0]
+			elif v==37:
+
+
+				arx=[0,1,game1x[3],m,v,0]
+			elif 38<=v<=43:
+				if v==38:
+					m=0
+
+
+				arx=[m,0,game1x[3],m,v,0]
+
+
+			elif 44<=v<=49:
+				if v==44:
+					m=0
+
+				arx=[5-m,2,game1x[0],m,v,0]
+			elif 50<=v<= 55:
+				if v==50:
+					m=0
+
+				arx=[m,1,game1x[0],m,v,0]		
+			elif v==56:
+				arx=[6,1,game1x[0],m,v,0]
+
+			m+=1
+			v+=1
+
+		return arx
+
+
+
+	ar=[]
+	sel=""
+
+	for p in pieces:
+
+
+
+
+		r=get_pos(p,val)
+
+		if game1[0][0]==p[0]:
+
+			pass#print(r)
+
+
+
+		for p_ in game2:
+
+			if p[0]!=p_[0]:
+
+				try:
+
+
+
+					if game2[p_][:3]==r[:3]:
+
+						#print("ok")
+
+						if game2[p_][-1]==1:
+
+							if game2[p_][:2]==[1,0] or game2[p_][:2]==[2,2]:
+								pass
+							else:
+
+								ar.append([p,game2[p_][-2]])
+
+
+				except:
+					pass
+
+	t=0
+
+	for _ in ar:
+
+		if _[1]>t:
+			t=_[1]
+			sel=_[0]
+
+
+
+
+
+	return sel
+
+
+
+
 
 
 one_st=0
@@ -702,6 +890,9 @@ def one():
 				st1_=1
 
 				dice_1_st=0
+
+		if len(a)>0:
+			get_ava_pieces(a,val1)
 
 
 		con=0
@@ -942,34 +1133,142 @@ def two():
 			
 		elif len(a)>0:
 
-			if len(h)>0 and val2==6:
+			attack_first_piece=get_ava_pieces(a,val2)
 
-				ha=random.randint(0,1)
 
-				if ha==0:
-					con=1
-					st2=1
+			if attack_first_piece=="":
 
-					if len(h)==1:
-						sel_2=h[0]
 
-					elif len(h)>1:
-						sel_2=h[random.randint(0,len(h)-1)]
-					val2=0
-					val2_=0
-					m2=0
-					m_2=0
-					st2_=0
+				if len(h)>0 and val2==6:
+
+					ha=random.randint(0,1)
+
+					if ha==0:
+						con=1
+						st2=1
+
+						if len(h)==1:
+							sel_2=h[0]
+
+						elif len(h)>1:
+							sel_2=h[random.randint(0,len(h)-1)]
+						val2=0
+						val2_=0
+						m2=0
+						m_2=0
+						st2_=0
+						
+						
+						
+					else:
+						
+
+						if len(a)==1:
+							sel_2=a[0]
+
+						elif  len(a)>1:
+
+								sel_2=a[random.randint(0,len(a)-1)]
+
+						val2_=game2[sel_2][-2]
+
+
+						while 1:
+
+
+							if val2_+val2>56:
+
+								aa=a.index(sel_2)
+								a.pop(aa)
+
+
+								if len(a)==0:
+									con=0
+									break
+
+								if len(a)==1:
+
+									sel_2=a[0]
+
+								elif len(a)>1:
+
+									sel_2=a[random.randint(0,len(a)-1)]
+								val2_=game2[sel_2][-2]
+
+
+									
+							else:
+
+								if game2[sel_2][-1]==0:
+
+									aa=a.index(sel_2)
+									a.pop(aa)
+
+
+									if len(a)==0:
+										con=0
+										break
+
+									if len(a)==1:
+										sel_2=a[0]
+
+									elif len(a)>1:
+
+
+										sel_2=a[random.randint(0,len(a)-1)]
+
+
+									val2_=game2[sel_2][-2]
+								else:
+
+
+									con=1
+									st2=1
+									m2=0
+
+									m_2=game2[sel_2][-3]
+									st2_=0
+
+									break
+
+						if con==0 and len(h)>0:
+
+							con=1
+							st2=1
+
+							if len(h)==1:
+								sel_2=h[0]
+
+							elif len(h)>1:
+								sel_2=h[random.randint(0,len(h)-1)]
+
+							val2=0
+							val2_=0
+							m2=0
+							m_2=0
+							st2_=0
+
+
+
+
+
+
 					
-					
-					
+
+
+
+
+
+						
+						
 				else:
-					
 
 					if len(a)==1:
 						sel_2=a[0]
 
-					elif  len(a)>1:
+					elif len(a)>1:
+
+
 						sel_2=a[random.randint(0,len(a)-1)]
 
 					val2_=game2[sel_2][-2]
@@ -978,28 +1277,34 @@ def two():
 					while 1:
 
 
+
+
+
 						if val2_+val2>56:
 
 							aa=a.index(sel_2)
 							a.pop(aa)
 
-
 							if len(a)==0:
 								con=0
 								break
 
-							if len(a)==1:
 
+
+
+							if len(a)==1:
 								sel_2=a[0]
 
+
 							elif len(a)>1:
+
+
 								sel_2=a[random.randint(0,len(a)-1)]
 
 							val2_=game2[sel_2][-2]
-
-
-								
 						else:
+
+
 
 							if game2[sel_2][-1]==0:
 
@@ -1015,11 +1320,12 @@ def two():
 									sel_2=a[0]
 
 								elif len(a)>1:
+
+
 									sel_2=a[random.randint(0,len(a)-1)]
+								
 								val2_=game2[sel_2][-2]
 							else:
-
-
 								con=1
 								st2=1
 								m2=0
@@ -1028,104 +1334,16 @@ def two():
 								st2_=0
 
 								break
-
-					if con==0 and len(h)>0:
-
-						con=1
-						st2=1
-
-						if len(h)==1:
-							sel_2=h[0]
-
-						elif len(h)>1:
-							sel_2=h[random.randint(0,len(h)-1)]
-
-						val2=0
-						val2_=0
-						m2=0
-						m_2=0
-						st2_=0
-
-
-
-
-
-
-					
-
-
-
-
-
-					
-					
 			else:
-
-				if len(a)==1:
-					sel_2=a[0]
-
-				elif len(a)>1:
-					sel_2=a[random.randint(0,len(a)-1)]
+				sel_2=attack_first_piece
 				val2_=game2[sel_2][-2]
 
+				con=1
+				st2=1
+				m2=0
 
-				while 1:
-
-
-
-
-
-					if val2_+val2>56:
-
-						aa=a.index(sel_2)
-						a.pop(aa)
-
-						if len(a)==0:
-							con=0
-							break
-
-
-
-
-						if len(a)==1:
-							sel_2=a[0]
-
-
-						elif len(a)>1:
-							sel_2=a[random.randint(0,len(a)-1)]
-						val2_=game2[sel_2][-2]
-					else:
-
-
-
-						if game2[sel_2][-1]==0:
-
-							aa=a.index(sel_2)
-							a.pop(aa)
-
-
-							if len(a)==0:
-								con=0
-								break
-
-							if len(a)==1:
-								sel_2=a[0]
-
-							elif len(a)>1:
-								sel_2=a[random.randint(0,len(a)-1)]
-							
-							val2_=game2[sel_2][-2]
-						else:
-							con=1
-							st2=1
-							m2=0
-
-							m_2=game2[sel_2][-3]
-							st2_=0
-
-							break
-
-
+				m_2=game2[sel_2][-3]
+				st2_=0
 
 		if con==0:
 
@@ -1354,37 +1572,135 @@ def three():
 			
 		elif len(a)>0:
 
-			if len(h)>0 and val3==6:
 
-				ha=random.randint(0,1)
+			attack_first_piece=get_ava_pieces(a,val3)
 
-				if ha==0:
-					con=1
-					st3=1
 
-					if len(h)==1:
-						sel_3=h[0]
+			if attack_first_piece=="":
+				if len(h)>0 and val3==6:
 
-					elif len(h)>1:
-						sel_3=h[random.randint(0,len(h)-1)]
-					val3=0
-					val3_=0
-					m3=0
-					m_3=0
-					st3_=0
-					
-					
-					
+					ha=random.randint(0,1)
+
+					if ha==0:
+						con=1
+						st3=1
+
+						if len(h)==1:
+							sel_3=h[0]
+
+						elif len(h)>1:
+							sel_3=h[random.randint(0,len(h)-1)]
+						val3=0
+						val3_=0
+						m3=0
+						m_3=0
+						st3_=0
+						
+						
+						
+					else:
+						if len(a)==1:
+							sel_3=a[0]
+
+						elif len(a)>1:
+							sel_3=a[random.randint(0,len(a)-1)]
+						val3_=game2[sel_3][-2]
+
+
+						while 1:
+
+
+							if val3_+val3>56:
+
+								aa=a.index(sel_3)
+								a.pop(aa)
+
+
+								if len(a)==0:
+									con=0
+									break
+
+								if len(a)==1:
+									sel_3=a[0]
+
+								elif len(a)>1:
+									sel_3=a[random.randint(0,len(a)-1)]
+								val3_=game2[sel_3][-2]
+							else:
+
+
+								if game2[sel_3][-1]==0:
+
+									aa=a.index(sel_3)
+									a.pop(aa)
+
+
+									if len(a)==0:
+										con=0
+										break
+
+									if len(a)==1:
+
+										sel_3=a[0]
+
+									elif len(a)>1:
+										sel_3=a[random.randint(0,len(a)-1)]
+
+									val3_=game2[sel_3][-2]
+								else:
+									con=1
+									st3=1
+									m3=0
+
+									m_3=game2[sel_3][-3]
+									st3_=0
+
+									break
+
+						if con==0 and len(h)>0:
+
+							con=1
+							st3=1
+
+							if len(h)==1:
+								sel_3=h[0]
+
+							elif len(h)>1:
+								sel_3=h[random.randint(0,len(h)-1)]
+
+							val3=0
+							val3_=0
+							m3=0
+							m_3=0
+							st3_=0
+
+
+
+
+
+
+						
+
+
+
+
+
+						
+						
 				else:
 					if len(a)==1:
 						sel_3=a[0]
 
 					elif len(a)>1:
 						sel_3=a[random.randint(0,len(a)-1)]
+
 					val3_=game2[sel_3][-2]
 
 
 					while 1:
+
+
+
 
 
 						if val3_+val3>56:
@@ -1392,19 +1708,21 @@ def three():
 							aa=a.index(sel_3)
 							a.pop(aa)
 
-
 							if len(a)==0:
 								con=0
 								break
 
+
 							if len(a)==1:
 								sel_3=a[0]
 
+
 							elif len(a)>1:
 								sel_3=a[random.randint(0,len(a)-1)]
+
+
 							val3_=game2[sel_3][-2]
 						else:
-
 
 							if game2[sel_3][-1]==0:
 
@@ -1417,14 +1735,13 @@ def three():
 									break
 
 								if len(a)==1:
-
 									sel_3=a[0]
 
 								elif len(a)>1:
 									sel_3=a[random.randint(0,len(a)-1)]
-
 								val3_=game2[sel_3][-2]
 							else:
+
 								con=1
 								st3=1
 								m3=0
@@ -1433,102 +1750,16 @@ def three():
 								st3_=0
 
 								break
-
-					if con==0 and len(h)>0:
-
-						con=1
-						st3=1
-
-						if len(h)==1:
-							sel_3=h[0]
-
-						elif len(h)>1:
-							sel_3=h[random.randint(0,len(h)-1)]
-
-						val3=0
-						val3_=0
-						m3=0
-						m_3=0
-						st3_=0
-
-
-
-
-
-
-					
-
-
-
-
-
-					
-					
 			else:
-				if len(a)==1:
-					sel_3=a[0]
-
-				elif len(a)>1:
-					sel_3=a[random.randint(0,len(a)-1)]
-
+				sel_3=attack_first_piece
 				val3_=game2[sel_3][-2]
 
+				con=1
+				st3=1
+				m3=0
 
-				while 1:
-
-
-
-
-
-					if val3_+val3>56:
-
-						aa=a.index(sel_3)
-						a.pop(aa)
-
-						if len(a)==0:
-							con=0
-							break
-
-
-						if len(a)==1:
-							sel_3=a[0]
-
-
-						elif len(a)>1:
-							sel_3=a[random.randint(0,len(a)-1)]
-
-
-						val3_=game2[sel_3][-2]
-					else:
-
-						if game2[sel_3][-1]==0:
-
-							aa=a.index(sel_3)
-							a.pop(aa)
-
-
-							if len(a)==0:
-								con=0
-								break
-
-							if len(a)==1:
-								sel_3=a[0]
-
-							elif len(a)>1:
-								sel_3=a[random.randint(0,len(a)-1)]
-							val3_=game2[sel_3][-2]
-						else:
-
-							con=1
-							st3=1
-							m3=0
-
-							m_3=game2[sel_3][-3]
-							st3_=0
-
-							break
-
-
+				m_3=game2[sel_3][-3]
+				st3_=0
 
 		if con==0:
 
@@ -1765,57 +1996,45 @@ def four():
 			
 		elif len(a)>0:
 
-			if len(h)>0 and val4==6:
 
-				ha=random.randint(0,1)
-
-				if ha==0:
-					con=1
-					st4=1
-
-					if len(h)==1:
-						sel_4=h[0]
-					elif len(h)>1:
-						sel_4=h[random.randint(0,len(h)-1)]
-					val4=0
-					val4_=0
-					m4=0
-					m_4=0
-					st4_=0
-					
-					
-					
-				else:
-					if len(a)==1:
-						sel_4=a[0]
-
-					elif len(a)>1:
-					
-						sel_4=a[random.randint(0,len(a)-1)]
-					val4_=game2[sel_4][-2]
+			attack_first_piece=get_ava_pieces(a,val4)
 
 
-					while 1:
+			if attack_first_piece=="":
+				if len(h)>0 and val4==6:
+
+					ha=random.randint(0,1)
+
+					if ha==0:
+						con=1
+						st4=1
+
+						if len(h)==1:
+							sel_4=h[0]
+						elif len(h)>1:
+							sel_4=h[random.randint(0,len(h)-1)]
+						val4=0
+						val4_=0
+						m4=0
+						m_4=0
+						st4_=0
+						
+						
+						
+					else:
+						if len(a)==1:
+							sel_4=a[0]
+
+						elif len(a)>1:
+						
+							sel_4=a[random.randint(0,len(a)-1)]
+						val4_=game2[sel_4][-2]
 
 
-						if val4_+val4>56:
-
-							aa=a.index(sel_4)
-							a.pop(aa)
+						while 1:
 
 
-							if len(a)==0:
-								con=0
-								break
-
-							if len(a)==1:
-								sel_4=a[0]
-
-							elif len(a)>1:
-								sel_4=a[random.randint(0,len(a)-1)]
-							val4_=game2[sel_4][-2]
-						else:
-							if game2[sel_4][-1]==0:
+							if val4_+val4>56:
 
 								aa=a.index(sel_4)
 								a.pop(aa)
@@ -1830,6 +2049,109 @@ def four():
 
 								elif len(a)>1:
 									sel_4=a[random.randint(0,len(a)-1)]
+								val4_=game2[sel_4][-2]
+							else:
+								if game2[sel_4][-1]==0:
+
+									aa=a.index(sel_4)
+									a.pop(aa)
+
+
+									if len(a)==0:
+										con=0
+										break
+
+									if len(a)==1:
+										sel_4=a[0]
+
+									elif len(a)>1:
+										sel_4=a[random.randint(0,len(a)-1)]
+
+									val4_=game2[sel_4][-2]
+								else:
+									con=1
+									st4=1
+									m4=0
+
+									m_4=game2[sel_4][-3]
+									st4_=0
+
+									break
+
+						if con==0 and len(h)>0:
+
+							con=1
+							st4=1
+
+							if len(h)==1:
+								sel_4=h[0]
+
+							elif len(h)>1:
+								sel_4=h[random.randint(0,len(h)-1)]
+							val4=0
+							val4_=0
+							m4=0
+							m_4=0
+							st4_=0
+
+
+
+
+
+
+						
+
+
+
+
+
+						
+						
+				else:
+					if len(a)==1:
+						sel_4=a[0]
+					elif len(a)>1:
+						sel_4=a[random.randint(0,len(a)-1)]
+					val4_=game2[sel_4][-2]
+
+
+					while 1:
+
+
+
+
+
+						if val4_+val4>56:
+
+							aa=a.index(sel_4)
+							a.pop(aa)
+
+							if len(a)==0:
+								con=0
+								break
+
+							if len(a)==1:
+								sel_4=a[0]
+							elif len(a)>1:
+								sel_4=a[random.randint(0,len(a)-1)]
+
+							val4_=game2[sel_4][-2]
+						else:
+							if game2[sel_4][-1]==0:
+
+								aa=a.index(sel_4)
+								a.pop(aa)
+
+
+								if len(a)==0:
+									con=0
+									break
+
+
+								if len(a)==1:
+									sel_4=a[0]
+								elif len(a)>1:
+									sel_4=a[random.randint(0,len(a)-1)]
 
 								val4_=game2[sel_4][-2]
 							else:
@@ -1842,94 +2164,16 @@ def four():
 
 								break
 
-					if con==0 and len(h)>0:
-
-						con=1
-						st4=1
-
-						if len(h)==1:
-							sel_4=h[0]
-
-						elif len(h)>1:
-							sel_4=h[random.randint(0,len(h)-1)]
-						val4=0
-						val4_=0
-						m4=0
-						m_4=0
-						st4_=0
-
-
-
-
-
-
-					
-
-
-
-
-
-					
-					
 			else:
-				if len(a)==1:
-					sel_4=a[0]
-				elif len(a)>1:
-					sel_4=a[random.randint(0,len(a)-1)]
-
+				sel_4=attack_first_piece
 				val4_=game2[sel_4][-2]
 
+				con=1
+				st4=1
+				m4=0
 
-				while 1:
-
-
-
-
-
-					if val4_+val4>56:
-
-						aa=a.index(sel_4)
-						a.pop(aa)
-
-						if len(a)==0:
-							con=0
-							break
-
-						if len(a)==1:
-							sel_4=a[0]
-						elif len(a)>1:
-							sel_4=a[random.randint(0,len(a)-1)]
-
-						val4_=game2[sel_4][-2]
-					else:
-						if game2[sel_4][-1]==0:
-
-							aa=a.index(sel_4)
-							a.pop(aa)
-
-
-							if len(a)==0:
-								con=0
-								break
-
-
-							if len(a)==1:
-								sel_4=a[0]
-							elif len(a)>1:
-								sel_4=a[random.randint(0,len(a)-1)]
-							val4_=game2[sel_4][-2]
-						else:
-							con=1
-							st4=1
-							m4=0
-
-							m_4=game2[sel_4][-3]
-							st4_=0
-
-							break
-
-
-
+				m_4=game2[sel_4][-3]
+				st4_=0
 		if con==0:
 
 
@@ -2116,7 +2360,7 @@ def _dice_1():
 	elif game1[0]=="yellow":
 		cl="yellow"
 	elif game1[0]=="blue":
-		cl="#3f5bff"
+		cl="#00ffff"
 
 
 
@@ -2175,7 +2419,7 @@ def _dice_2():
 	elif game1[1]=="yellow":
 		cl="yellow"
 	elif game1[1]=="blue":
-		cl="#3f5bff"
+		cl="#00ffff"
 
 
 
@@ -2241,7 +2485,7 @@ def _dice_3():
 	elif game1[2]=="yellow":
 		cl="yellow"
 	elif game1[2]=="blue":
-		cl="#3f5bff"
+		cl="#00ffff"
 
 
 
@@ -2302,7 +2546,7 @@ def _dice_4():
 	elif game1[3]=="yellow":
 		cl="yellow"
 	elif game1[3]=="blue":
-		cl="#3f5bff"
+		cl="#00ffff"
 
 
 
@@ -2361,7 +2605,7 @@ def _dice_(dd,v,col):
 		col2="#%02x%02x%02x"%(0,int(255/r),0)
 	elif col=="yellow":
 		col2="#%02x%02x%02x"%(int(255/r),int(255/r),0)
-	elif col=="#3f5bff":
+	elif col=="#00ffff":
 		col2="#%02x%02x%02x"%(0,0,int(255/r))
 
 
@@ -2483,7 +2727,7 @@ def main():
 					cl="yellow"
 					cl2="#7f7f00"
 				elif game1[0]=="blue":
-					cl="#3f5bff"
+					cl="#00ffff"
 					cl2="darkblue"
 
 				turn_=can.create_polygon(70,590-100-70, 70,590-70, 70+100,590-70, 70+10,590-70-10,fill=cl,outline=cl)
@@ -2504,7 +2748,7 @@ def main():
 					cl="yellow"
 					cl2="#7f7f00"
 				elif game1[1]=="blue":
-					cl="#3f5bff"
+					cl="#00ffff"
 					cl2="darkblue"
 
 
@@ -2526,7 +2770,7 @@ def main():
 					cl="yellow"
 					cl2="#7f7f00"
 				elif game1[2]=="blue":
-					cl="#3f5bff"
+					cl="#00ffff"
 					cl2="darkblue"
 
 				turn_=can.create_polygon(590-70-100,70, 590-70,70, 590-70,70+100, 590-70-10,70+10, 590-70-100,70,  fill=cl,outline=cl)
@@ -2548,7 +2792,7 @@ def main():
 					cl="yellow"
 					cl2="#7f7f00"
 				elif game1[3]=="blue":
-					cl="#3f5bff"
+					cl="#00ffff"
 					cl2="darkblue"
 
 				turn_=can.create_polygon(590-70,580-70-100, 590-70,590-70, 590-70-100,590-70, 590-70-10,590-70-10, 590-70,580-70-100,  fill=cl,outline=cl)
@@ -3060,7 +3304,7 @@ def draw_bg():
 		c2="yellow"
 	elif game1[0]=="blue":
 		c="#%02x%02x%02x"%(0,0,int(255/r))
-		c2="#3f5bff"
+		c2="#00ffff"
 
 
 	def draw_round_rec(x_,y_,col,opacity):
@@ -3191,7 +3435,7 @@ def draw_bg():
 		c2="yellow"
 	elif game1[1]=="blue":
 		c="#%02x%02x%02x"%(0,0,int(255/r))
-		c2="#3f5bff"
+		c2="#00ffff"
 
 
 	bx,by=x+s,y+s
@@ -3235,7 +3479,7 @@ def draw_bg():
 		c2="yellow"
 	elif game1[2]=="blue":
 		c="#%02x%02x%02x"%(0,0,int(255/r))
-		c2="#3f5bff"
+		c2="#00ffff"
 
 
 	bx,by=x+s*10,y+s
@@ -3279,7 +3523,7 @@ def draw_bg():
 		c2="yellow"
 	elif game1[3]=="blue":
 		c="#%02x%02x%02x"%(0,0,int(255/r))
-		c2="#3f5bff"
+		c2="#00ffff"
 
 
 
@@ -3363,7 +3607,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[0], alpha=0.3)
+	create_polygon(*ar, fill=game1[0], alpha=0.4)
 
 
 
@@ -3387,7 +3631,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[0]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -3458,7 +3702,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[0]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 		if not _y==5:
@@ -3490,7 +3734,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[0]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -3586,7 +3830,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[1], alpha=0.3)
+	create_polygon(*ar, fill=game1[1], alpha=0.4)
 
 
 
@@ -3608,7 +3852,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[1]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -3671,7 +3915,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[1]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -3706,7 +3950,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[1]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -3809,7 +4053,7 @@ def draw_bg():
 	ar.append(int(y_+s*6))
 
 
-	create_polygon(*ar, fill=game1[2], alpha=0.3)
+	create_polygon(*ar, fill=game1[2], alpha=0.4)
 
 
 
@@ -3832,7 +4076,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[2]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -3892,7 +4136,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[2]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 		if _y==0:
@@ -3932,7 +4176,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[2]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -4031,7 +4275,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[3], alpha=0.3)
+	create_polygon(*ar, fill=game1[3], alpha=0.4)
 
 
 
@@ -4052,7 +4296,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[3]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -4112,7 +4356,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[3]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 		if _x==5:
@@ -4147,7 +4391,7 @@ def draw_bg():
 			col2="yellow"
 		elif game1[3]=="blue":
 			col="#%02x%02x%02x"%(0,0,int(255/r))
-			col2="#3f5bff"
+			col2="#00ffff"
 
 
 
@@ -4223,7 +4467,7 @@ def draw_bg():
 			col2="yellow"
 		elif c=="blue":
 			col="darkblue"
-			col2="#3f5bff"
+			col2="#00ffff"
 
 		return [col,col2]
 
@@ -4232,22 +4476,13 @@ def draw_bg():
 	x_=x+s*6
 	y_=y+s*6
 
-	create_polygon(int(x_),int(y_), int(x_+s+s/2), int(y_+s+s/2), int(x_),int(y_+s*3), fill=game1[1], alpha=0.7)
-	create_polygon(int(x_),int(y_), int(x_+s+s/2), int(y_+s+s/2), int(x_+s*3),int(y_),fill=game1[2], alpha=0.7)
+
+	can.create_polygon(x_,y_, x_+s+s/2, y_+s+s/2, x_,y_+s*3,fill=getc(game1[1])[1],outline=getc(game1[1])[1])
+	can.create_polygon(x_,y_, x_+s+s/2, y_+s+s/2, x_+s*3,y_,fill=getc(game1[2])[1],outline=getc(game1[2])[1])
 	x_=x+s*9
 	y_=y+s*9
-
-	create_polygon(int(x_),int(y_), int(x_-s-s/2), int(y_-s-s/2), int(x_),int(y_-s*3),fill=game1[3], alpha=0.7)
-	create_polygon(int(x_),int(y_), int(x_-s-s/2), int(y_-s-s/2), int(x_-s*3),int(y_),fill=game1[0], alpha=0.7)
-
-
-
-	#can.create_polygon(x_,y_, x_+s+s/2, y_+s+s/2, x_,y_+s*3,fill=getc(game1[1])[1],outline=getc(game1[1])[1])
-	#can.create_polygon(x_,y_, x_+s+s/2, y_+s+s/2, x_+s*3,y_,fill=getc(game1[2])[1],outline=getc(game1[2])[1])
-	#x_=x+s*9
-	#y_=y+s*9
-	#can.create_polygon(x_,y_, x_-s-s/2, y_-s-s/2, x_,y_-s*3,fill=getc(game1[3])[1],outline=getc(game1[3])[1])
-	#can.create_polygon(x_,y_, x_-s-s/2, y_-s-s/2, x_-s*3,y_,fill=getc(game1[0])[1],outline=getc(game1[0])[1])
+	can.create_polygon(x_,y_, x_-s-s/2, y_-s-s/2, x_,y_-s*3,fill=getc(game1[3])[1],outline=getc(game1[3])[1])
+	can.create_polygon(x_,y_, x_-s-s/2, y_-s-s/2, x_-s*3,y_,fill=getc(game1[0])[1],outline=getc(game1[0])[1])
 
 
 
@@ -4258,7 +4493,7 @@ def draw_bg():
 	elif game1[0]=="yellow":
 		cl="yellow"
 	elif game1[0]=="blue":
-		cl="#3f5bff"
+		cl="#00ffff"
 
 
 
@@ -4390,7 +4625,7 @@ def sel_col():
 
 	ar=["red","green","yellow","blue"]
 
-	ar2=["red","lime","yellow","#3f5bff"]
+	ar2=["red","lime","yellow","#00ffff"]
 
 	for _ in range(4):
 
@@ -4424,7 +4659,7 @@ def draw_pointer(x,y,sz,col,i):
 	global can,ar_p
 
 
-	a=-90+20
+	a=-90+15
 
 
 
@@ -4433,7 +4668,7 @@ def draw_pointer(x,y,sz,col,i):
 
 	cx=x
 	cy=y-sz*0.7
-	for _ in range(220 ):
+	for _ in range(210):
 
 		x_=sz/3*math.sin(math.radians(a))+cx
 		y_=sz/3*math.cos(math.radians(a))+cy
@@ -4444,8 +4679,8 @@ def draw_pointer(x,y,sz,col,i):
 
 		a-=1
 
-	#ar2.append(x)
-	#ar2.append(y)
+	ar2.append(x)
+	ar2.append(y)
 
 	a=-90+20
 
@@ -4482,14 +4717,14 @@ def draw_pointer(x,y,sz,col,i):
 	elif col=="blue":
 		col_="darkblue"
 		col2="#%02x%02x%02x"%(0,0,int(255/3.5))
-		col3="#3f5bff"
+		col3="#00ffff"
 
 	if col=="green":
 		col="lime"
 	elif col=="blue":
-		col="#3f5bff"
+		col="#00ffff"
 
-	ar_p[i]=can.create_polygon(ar,fill=col3,outline=col3)
+	ar_p[i]=can.create_polygon(ar2,fill=col3,outline=col3)
 	ar_p[i+1]=can.create_line(ar2,fill=col2)
 
 	ar_p[i+2]=can.create_oval(cx-sz/5*1.1,cy-sz/5*1.1, cx+sz/5*1.1,cy+sz/5*1.1, fill=col2,outline=col2)
@@ -4699,6 +4934,9 @@ def can_commands(e):
 								main()
 
 					elif len(a)>0:
+						
+						
+						#print(get_ava_pieces(a,val1))
 
 						if pos[0]==game1[0][0] and len(h)>0 and val1==6:
 
@@ -4729,16 +4967,16 @@ def can_commands(e):
 								elif len(a_)>1:
 									sel_1=a_[random.randint(0,len(a_)-1)]
 
+								if not len(game2[sel_1])==2:
+									val1_=game2[sel_1][-2]
 
-								val1_=game2[sel_1][-2]
 
+									if val1_+val1<=56:
+										m1=0
+										m_1=game2[sel_1][-3]
+										st1_=0
 
-								if val1_+val1<=56:
-									m1=0
-									m_1=game2[sel_1][-3]
-									st1_=0
-
-									st1=1
+										st1=1
 
 								main()
 
@@ -4884,6 +5122,8 @@ def can_commands(e):
 
 					
 					main()
+
+					#get_ava_pieces(pieces,val)
 
 
 
@@ -5172,35 +5412,53 @@ def create_rectangle(can,x1, y1, x2, y2, **kwargs):
 		images.append(ImageTk.PhotoImage(image))
 		can.create_image(x1, y1, image=images[-1], anchor='nw')
 
-def create_polygon(*args, **kwargs):
+
+
+def hex_to_rgba(hex_color, alpha):
+    """Convert hex color like '#38fca5' to RGBA tuple."""
+    hex_color = hex_color.lstrip('#')
+    r, g, b = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    return (r, g, b, int(alpha * 255))
+
+
+
+def create_polygon(*args, fill,alpha):
 	global can
 
 
 
 
-	if "alpha" in kwargs:         
-		if "fill" in kwargs:
-			# Get and process the input data
-			fill = root.winfo_rgb(kwargs.pop("fill"))\
-			       + (int(kwargs.pop("alpha") * 255),)
-			outline = kwargs.pop("outline") if "outline" in kwargs else None
 
-			# We need to find a rectangle the polygon is inscribed in
-			# (max(args[::2]), max(args[1::2])) are x and y of the bottom right point of this rectangle
-			# and they also are the width and height of it respectively (the image will be inserted into
-			# (0, 0) coords for simplicity)
-			image = Image.new("RGBA", (max(args[::2]), max(args[1::2])))
-
-			ImageDraw.Draw(image).polygon(args, fill=fill, outline=outline)
+	image = Image.new("RGBA", (max(args[::2]), max(args[1::2])))
 
 
+	if fill=="red":
+		fill="#ff0000"
 
-			images.append(ImageTk.PhotoImage(image))  # prevent the Image from being garbage-collected
+	elif fill=="green":
+		fill="#00ff00"
+
+	elif fill=="yellow":
+		fill="#ffff00"
 
 
-			return can.create_image(0, 0, image=images[-1], anchor="nw")  # insert the Image to the 0, 0 coords
-		raise ValueError("fill color must be specified!")
-	return can.create_polygon(*args, **kwargs)
+	elif fill=="blue":
+		fill="#00ffff"
+
+
+		
+
+
+	fill=hex_to_rgba(fill, alpha)
+
+	ImageDraw.Draw(image).polygon(args, fill=fill)
+
+
+
+	images.append(ImageTk.PhotoImage(image))  # prevent the Image from being garbage-collected
+
+
+	return can.create_image(0, 0, image=images[-1], anchor="nw")  # insert the Image to the 0, 0 coords
 
 
 
