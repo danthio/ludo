@@ -675,6 +675,7 @@ def get_ava_pieces(pieces,val):
 
 
 
+
 	def get_pos(p,val):
 
 
@@ -891,8 +892,6 @@ def one():
 
 				dice_1_st=0
 
-		if len(a)>0:
-			get_ava_pieces(a,val1)
 
 
 		con=0
@@ -1132,6 +1131,12 @@ def two():
 			
 			
 		elif len(a)>0:
+
+			for _ in a:
+				if game2[_][-1]==0:
+
+					root.after(1,two)
+					return
 
 			attack_first_piece=get_ava_pieces(a,val2)
 
@@ -1572,6 +1577,12 @@ def three():
 			
 		elif len(a)>0:
 
+			for _ in a:
+				if game2[_][-1]==0:
+
+					root.after(1,three)
+					return
+
 
 			attack_first_piece=get_ava_pieces(a,val3)
 
@@ -1996,6 +2007,12 @@ def four():
 			
 		elif len(a)>0:
 
+
+			for _ in a:
+				if game2[_][-1]==0:
+
+					root.after(1,four)
+					return
 
 			attack_first_piece=get_ava_pieces(a,val4)
 
