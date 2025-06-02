@@ -1112,6 +1112,17 @@ def two():
 
 		h,a=home_and_away(col)
 
+
+		for _ in a:
+			if game2[_][-1]==0:
+
+				root.after(1,two)
+				return
+
+
+		h,a=home_and_away(col)
+
+
 		if len(h)==4 and val2==6:
 			con=1
 			st2=1
@@ -1132,11 +1143,7 @@ def two():
 			
 		elif len(a)>0:
 
-			for _ in a:
-				if game2[_][-1]==0:
 
-					root.after(1,two)
-					return
 
 			attack_first_piece=get_ava_pieces(a,val2)
 
@@ -1561,6 +1568,15 @@ def three():
 
 		h,a=home_and_away(col)
 
+		for _ in a:
+			if game2[_][-1]==0:
+
+				root.after(1,three)
+				return
+
+		h,a=home_and_away(col)
+
+
 		if len(h)==4 and val3==6:
 			con=1
 			st3=1
@@ -1577,11 +1593,6 @@ def three():
 			
 		elif len(a)>0:
 
-			for _ in a:
-				if game2[_][-1]==0:
-
-					root.after(1,three)
-					return
 
 
 			attack_first_piece=get_ava_pieces(a,val3)
@@ -1991,6 +2002,17 @@ def four():
 
 		h,a=home_and_away(col)
 
+
+
+		for _ in a:
+			if game2[_][-1]==0:
+
+				root.after(1,four)
+				return
+
+		h,a=home_and_away(col)
+
+
 		if len(h)==4 and val4==6:
 			con=1
 			st4=1
@@ -2007,12 +2029,6 @@ def four():
 			
 		elif len(a)>0:
 
-
-			for _ in a:
-				if game2[_][-1]==0:
-
-					root.after(1,four)
-					return
 
 			attack_first_piece=get_ava_pieces(a,val4)
 
