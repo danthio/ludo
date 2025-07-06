@@ -5,9 +5,9 @@ import math
 import time
 
 
-im=Image.open("data/blue_star.png")
+im=Image.open("data/red_star.png")
 im=im.resize((22,22))
-im.save("data/blue_star.png")
+im.save("data/red_star.png")
 
 
 
@@ -2387,7 +2387,7 @@ def _dice_1():
 
 
 	if game1[0]=="red":
-		cl="red"
+		cl="#f94449"
 	elif game1[0]=="green":
 		cl="lime"
 	elif game1[0]=="yellow":
@@ -2446,7 +2446,7 @@ def _dice_2():
 
 
 	if game1[1]=="red":
-		cl="red"
+		cl="#f94449"
 	elif game1[1]=="green":
 		cl="lime"
 	elif game1[1]=="yellow":
@@ -2512,7 +2512,7 @@ def _dice_3():
 
 
 	if game1[2]=="red":
-		cl="red"
+		cl="#f94449"
 	elif game1[2]=="green":
 		cl="lime"
 	elif game1[2]=="yellow":
@@ -2573,7 +2573,7 @@ def _dice_4():
 
 
 	if game1[3]=="red":
-		cl="red"
+		cl="#f94449"
 	elif game1[3]=="green":
 		cl="lime"
 	elif game1[3]=="yellow":
@@ -2632,7 +2632,7 @@ def _dice_(dd,v,col):
 
 	r=3.5
 
-	if col=="red":
+	if col=="#f94449":
 		col2="#%02x%02x%02x"%(int(255/r),0,0)
 	elif col=="lime":
 		col2="#%02x%02x%02x"%(0,int(255/r),0)
@@ -2751,7 +2751,7 @@ def main():
 
 
 				if game1[0]=="red":
-					cl="red"
+					cl="#f94449"
 					cl2="darkred"
 				elif game1[0]=="green":
 					cl="lime"
@@ -2772,7 +2772,7 @@ def main():
 
 
 				if game1[1]=="red":
-					cl="red"
+					cl="#f94449"
 					cl2="darkred"
 				elif game1[1]=="green":
 					cl="lime"
@@ -2794,7 +2794,7 @@ def main():
 
 
 				if game1[2]=="red":
-					cl="red"
+					cl="#f94449"
 					cl2="darkred"
 				elif game1[2]=="green":
 					cl="lime"
@@ -2816,7 +2816,7 @@ def main():
 
 
 				if game1[3]=="red":
-					cl="red"
+					cl="#f94449"
 					cl2="darkred"
 				elif game1[3]=="green":
 					cl="lime"
@@ -3328,7 +3328,7 @@ def draw_bg():
 
 	if game1[0]=="red":
 		c="#%02x%02x%02x"%(int(255/r),0,0)
-		c2="red"
+		c2="#f94449"
 	elif game1[0]=="green":
 		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
@@ -3459,7 +3459,7 @@ def draw_bg():
 
 	if game1[1]=="red":
 		c="#%02x%02x%02x"%(int(255/r),0,0)
-		c2="red"
+		c2="#f94449"
 	elif game1[1]=="green":
 		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
@@ -3503,7 +3503,7 @@ def draw_bg():
 
 	if game1[2]=="red":
 		c="#%02x%02x%02x"%(int(255/r),0,0)
-		c2="red"
+		c2="#f94449"
 	elif game1[2]=="green":
 		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
@@ -3547,7 +3547,7 @@ def draw_bg():
 
 	if game1[3]=="red":
 		c="#%02x%02x%02x"%(int(255/r),0,0)
-		c2="red"
+		c2="#f94449"
 	elif game1[3]=="green":
 		c="#%02x%02x%02x"%(0,int(255/r),0)
 		c2="lime"
@@ -3640,7 +3640,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[0], alpha=0.4)
+	create_polygon(*ar, fill=game1[0], alpha=0.3)
 
 
 
@@ -3655,7 +3655,7 @@ def draw_bg():
 
 		if game1[0]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[0]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -3726,7 +3726,7 @@ def draw_bg():
 
 		if game1[0]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[0]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -3758,7 +3758,7 @@ def draw_bg():
 
 		if game1[0]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[0]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -3863,7 +3863,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[1], alpha=0.4)
+	create_polygon(*ar, fill=game1[1], alpha=0.3)
 
 
 
@@ -3876,7 +3876,7 @@ def draw_bg():
 
 		if game1[1]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[1]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -3939,7 +3939,7 @@ def draw_bg():
 
 		if game1[1]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[1]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -3974,7 +3974,7 @@ def draw_bg():
 
 		if game1[1]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[1]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4086,7 +4086,7 @@ def draw_bg():
 	ar.append(int(y_+s*6))
 
 
-	create_polygon(*ar, fill=game1[2], alpha=0.4)
+	create_polygon(*ar, fill=game1[2], alpha=0.3)
 
 
 
@@ -4100,7 +4100,7 @@ def draw_bg():
 
 		if game1[2]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[2]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4160,7 +4160,7 @@ def draw_bg():
 
 		if game1[2]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[2]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4200,7 +4200,7 @@ def draw_bg():
 
 		if game1[2]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[2]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4308,7 +4308,7 @@ def draw_bg():
 	ar.append(int(y_))
 
 
-	create_polygon(*ar, fill=game1[3], alpha=0.4)
+	create_polygon(*ar, fill=game1[3], alpha=0.3)
 
 
 
@@ -4320,7 +4320,7 @@ def draw_bg():
 
 		if game1[3]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[3]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4380,7 +4380,7 @@ def draw_bg():
 
 		if game1[3]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[3]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4415,7 +4415,7 @@ def draw_bg():
 
 		if game1[3]=="red":
 			col="#%02x%02x%02x"%(int(255/r),0,0)
-			col2="red"
+			col2="#f94449"
 		elif game1[3]=="green":
 			col="#%02x%02x%02x"%(0,int(255/r),0)
 			col2="lime"
@@ -4491,7 +4491,7 @@ def draw_bg():
 	def getc(c):
 		if c=="red":
 			col="darkred"
-			col2="red"
+			col2="#f94449"
 		elif c=="green":
 			col="green"
 			col2="lime"
@@ -4520,7 +4520,7 @@ def draw_bg():
 
 
 	if game1[0]=="red":
-		cl="red"
+		cl="#f94449"
 	elif game1[0]=="green":
 		cl="lime"
 	elif game1[0]=="yellow":
@@ -4658,7 +4658,7 @@ def sel_col():
 
 	ar=["red","green","yellow","blue"]
 
-	ar2=["red","lime","yellow","#00ffff"]
+	ar2=["#f94449","lime","yellow","#00ffff"]
 
 	for _ in range(4):
 
@@ -4738,7 +4738,7 @@ def draw_pointer(x,y,sz,col,i):
 	if col=="red":
 		col_="darkred"
 		col2="#%02x%02x%02x"%(int(255/3.5),0,0)
-		col3="red"
+		col3="#f94449"
 	elif col=="green":
 		col_="darkgreen"
 		col2="#%02x%02x%02x"%(0,int(255/3.5),0)
@@ -5448,7 +5448,7 @@ def create_rectangle(can,x1, y1, x2, y2, **kwargs):
 
 
 def hex_to_rgba(hex_color, alpha):
-    """Convert hex color like '#38fca5' to RGBA tuple."""
+    """Convert hex color like 'lime' to RGBA tuple."""
     hex_color = hex_color.lstrip('#')
     r, g, b = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
     return (r, g, b, int(alpha * 255))
@@ -5466,7 +5466,7 @@ def create_polygon(*args, fill,alpha):
 
 
 	if fill=="red":
-		fill="#ff0000"
+		fill="#ff2c2c"
 
 	elif fill=="green":
 		fill="#00ff00"
